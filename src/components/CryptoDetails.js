@@ -48,7 +48,9 @@ const CryptoDetails = () => {
 		{ title: 'Rank', value: cryptoDetails.rank, icon: <NumberOutlined /> },
 		{
 			title: '24h Volume',
-			value: `$ ${cryptoDetails.volume && millify(cryptoDetails.volume)}`,
+			value: `$ ${
+				cryptoDetails['24hVolume'] && millify(cryptoDetails['24hVolume'])
+			}`,
 			icon: <ThunderboltOutlined />,
 		},
 		{
@@ -99,7 +101,7 @@ const CryptoDetails = () => {
 		<Col className='coin-detail-container'>
 			<Col className='coin-heading-container'>
 				<Title level={2} className='coin-name'>
-					{data?.data?.coin.name} ({data?.data?.coin.slug}) Price
+					{data?.data?.coin.name} ({data?.data?.coin.symbol}) Price
 				</Title>
 				<p>
 					{cryptoDetails.name} live price in US Dollar (USD). View value

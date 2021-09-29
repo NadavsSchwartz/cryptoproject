@@ -11,6 +11,7 @@ import {
 	Navbar,
 } from './components';
 import './App.css';
+import { Content } from 'antd/lib/layout/layout';
 
 const routes = [
 	{ path: '/', name: 'Homepage', Component: Homepage },
@@ -32,13 +33,18 @@ const routes = [
 	},
 ];
 const App = () => (
-	<div className='app'>
-		<div className='navbar'>
-			<Navbar />
-		</div>
-		<div className='main'>
-			<Layout>
-				<div className='routes'>
+	<Layout style={{ minHeight: '100vh' }}>
+		<Navbar />
+		<Layout>
+			<Content
+				style={{
+					padding: 24,
+					marginTop: '50px',
+					minHeight: 280,
+					height: '100%',
+				}}
+			>
+				<Layout>
 					<Switch>
 						{routes.map(({ path, Component }) => (
 							<Route key={path} exact path={path}>
@@ -46,8 +52,8 @@ const App = () => (
 							</Route>
 						))}
 					</Switch>
-				</div>
-			</Layout>
+				</Layout>
+			</Content>
 			<div className='footer'>
 				<Typography.Title
 					level={5}
@@ -63,8 +69,8 @@ const App = () => (
 					<Link to='/news'>News</Link>
 				</Space>
 			</div>
-		</div>
-	</div>
+		</Layout>
+	</Layout>
 );
 
 export default App;

@@ -34,23 +34,28 @@ const Cryptocurrencies = ({ simplified }) => {
 					/>
 				</div>
 			)}
-			<Row gutter={[32, 32]} className='crypto-card-container'>
+
+			<Card>
 				{cryptos?.map((currency) => (
-					<Col xs={24} sm={12} lg={6} className='crypto-card' key={currency.id}>
-						<Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
-							<Card
-								title={`${currency.rank}. ${currency.name}`}
-								extra={<img className='crypto-image' src={currency.iconUrl} />}
-								hoverable
-							>
-								<p>Price: {millify(currency.price)}</p>
-								<p>Market Cap: {millify(currency.marketCap)}</p>
-								<p>Daily Change: {currency.change}%</p>
-							</Card>
-						</Link>
-					</Col>
+					<Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
+						<Card.Grid
+							style={{ width: '20%', textAlign: 'center', height: '200px' }}
+							hoverable
+						>
+							<span style={{ marginRight: '5px' }}>
+								<img
+									src={currency.iconUrl}
+									style={{ height: '30px', width: '30px' }}
+									alt='crypto'
+								/>
+							</span>
+							{currency.name} | ${millify(currency.price)}
+							<p>Market Cap: {millify(currency.marketCap)}</p>
+							<p>Daily Change: {currency.change}%</p>
+						</Card.Grid>
+					</Link>
 				))}
-			</Row>
+			</Card>
 		</>
 	);
 };
