@@ -20,15 +20,16 @@ const News = ({ simplified }) => {
 		newsCategory,
 		count: simplified ? 6 : 12,
 	});
+	const { Meta } = Card;
 
 	if (!cryptoNews?.value) return <Loader />;
 
 	return (
 		<Layout>
-			<Content style={{ padding: '20px' }}>
-				<Row gutter={[24, 24]}>
+			<Content>
+				<Row gutter={[10, 10]}>
 					{!simplified && (
-						<Col span={18}>
+						<Col >
 							<Select
 								showSearch
 								placeholder='Select a Crypto'
@@ -46,45 +47,46 @@ const News = ({ simplified }) => {
 							</Select>
 						</Col>
 					)}
-					{cryptoNews.value.map((news, i) => (
-						<Col key={i}>
-							<Card hoverable style={{ width: '400px', height: '300px' }}>
-								<a href={news.url} target='_blank' rel='noreferrer'>
-									<div className='news-image-container'>
-										<Title className='news-title' level={4}>
-											{news.name}
-										</Title>
-										<img
-											src={news?.image?.thumbnail?.contentUrl || demoImage}
-											alt=''
+					<Row gutter={[10, 10]}>
+						{cryptoNews.value.map((news, i) => (
+							<Col key={i} xs={18} sm={18} md={12} lg={12} xl={8}>
+								<Card hoverable title={news.name}>
+									<a href={news.url} target='_blank' rel='noreferrer'>
+										<Meta
+											avatar={
+												<img
+													src={news?.image?.thumbnail?.contentUrl || demoImage}
+													alt=''
+												/>
+											}
+											description={
+												news.description.length > 100
+													? `${news.description.substring(0, 100)}...`
+													: news.description
+											}
 										/>
-									</div>
-									<p>
-										{news.description.length > 100
-											? `${news.description.substring(0, 100)}...`
-											: news.description}
-									</p>
-									<div className='provider-container'>
-										<div>
-											<Avatar
-												src={
-													news.provider[0]?.image?.thumbnail?.contentUrl ||
-													demoImage
-												}
-												alt=''
-											/>
-											<Text className='provider-name'>
-												{news.provider[0]?.name}
+										<div className='provider-container'>
+											<div>
+												<Avatar
+													src={
+														news.provider[0]?.image?.thumbnail?.contentUrl ||
+														demoImage
+													}
+													alt=''
+												/>
+												<Text className='provider-name'>
+													{news.provider[0]?.name}
+												</Text>
+											</div>
+											<Text>
+												{moment(news.datePublished).startOf('ss').fromNow()}
 											</Text>
 										</div>
-										<Text>
-											{moment(news.datePublished).startOf('ss').fromNow()}
-										</Text>
-									</div>
-								</a>
-							</Card>
-						</Col>
-					))}
+									</a>
+								</Card>
+							</Col>
+						))}
+					</Row>
 				</Row>
 			</Content>
 		</Layout>

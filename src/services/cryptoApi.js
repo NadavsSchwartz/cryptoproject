@@ -15,6 +15,9 @@ export const cryptoApi = createApi({
 			'https://cors-anywhere.herokuapp.com/https://api.coinranking.com/v2',
 	}),
 	endpoints: (builder) => ({
+		getCryptostats: builder.query({
+			query: () => createRequest(`/stats`),
+		}),
 		getCryptos: builder.query({
 			query: (count) => createRequest(`/coins?limit=${count}`),
 		}),
@@ -32,6 +35,7 @@ export const cryptoApi = createApi({
 });
 
 export const {
+	useGetCryptostatsQuery,
 	useGetCryptosQuery,
 	useGetCryptoDetailsQuery,
 	useGetExchangesQuery,

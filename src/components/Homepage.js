@@ -1,83 +1,124 @@
 import React from 'react';
 import millify from 'millify';
-import { Typography, Row, Col, Statistic, Layout } from 'antd';
+import {
+	Typography,
+	Row,
+	Col,
+	Statistic,
+	Layout,
+	Card,
+	Popover,
+	Button,
+} from 'antd';
 import { Link } from 'react-router-dom';
 
-import { useGetCryptosQuery } from '../services/cryptoApi';
+import { useGetCryptostatsQuery } from '../services/cryptoApi';
 import Cryptocurrencies from './Cryptocurrencies';
 import News from './News';
 import Loader from './Loader';
 import { Content } from 'antd/lib/layout/layout';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
 const Homepage = () => {
-	const { data, isFetching } = useGetCryptosQuery(3);
-	console.log(data);
-	const globalStats = data?.data?.stats;
+	const { data, isFetching } = useGetCryptostatsQuery();
 
+	const globalStats = data?.data;
 	if (isFetching) return <Loader />;
 
 	return (
 		<Layout>
-			<Content style={{ padding: '20px' }}>
-				<Title>Global Crypto Stats</Title>
-				<Row gutter={[32, 32]}>
-					<Col span={12}>
-						<Statistic
-							title='Total Cryptocurrencies'
-							value={globalStats.total}
-						/>
+			<Content align='center'>
+				<Row gutter={[10, 10]} align='center'>
+					<Col xs={12} sm={12} md={8} lg={6} xl={4.5} bordered>
+						<Card
+							bordered
+							title='Total Coins'
+							style={{ height: '100%', width: '100%' }}
+							extra={
+								<Popover content={'asd'} title='Title'>
+									<InfoCircleOutlined />
+								</Popover>
+							}
+						>
+							{globalStats.totalCoins}
+						</Card>
 					</Col>
-					<Col span={12}>
-						<Statistic
+					<Col xs={12} sm={12} md={8} lg={6} xl={4.5} bordered>
+						<Card
+							bordered
 							title='Total Exchanges'
-							value={millify(globalStats.totalExchanges)}
-						/>
+							style={{ height: '100%', width: '100%' }}
+							extra={
+								<Popover content={'asd'} title='Title'>
+									<InfoCircleOutlined />
+								</Popover>
+							}
+						>
+							{millify(globalStats.totalExchanges)}
+						</Card>{' '}
 					</Col>
-					<Col span={12}>
-						<Statistic
-							title='Total Market Cap:'
-							value={`$${millify(globalStats.totalMarketCap)}`}
-						/>
+					<Col xs={12} sm={12} md={8} lg={6} xl={4.5} bordered>
+						<Card
+							bordered
+							title='Market Cap'
+							style={{ height: '100%', width: '100%' }}
+							extra={
+								<Popover content={'asd'} title='Title'>
+									<InfoCircleOutlined />
+								</Popover>
+							}
+						>
+							{`$${millify(globalStats.totalMarketCap)}`}
+						</Card>{' '}
 					</Col>
-					<Col span={12}>
-						<Statistic
-							title='Total 24h Volume'
-							value={`$${millify(globalStats.total24hVolume)}`}
-						/>
-					</Col>
-					<Col span={12}>
-						<Statistic
-							title='Total Cryptocurrencies'
-							value={globalStats.total}
-						/>
-					</Col>
-					<Col span={12}>
-						<Statistic
+					<Col xs={12} sm={12} md={8} lg={6} xl={4.5} bordered>
+						<Card
+							bordered
 							title='Total Markets'
-							value={millify(globalStats.totalMarkets)}
-						/>
+							style={{ height: '100%', width: '100%' }}
+							extra={
+								<Popover content={'asd'} title='Title'>
+									<InfoCircleOutlined />
+								</Popover>
+							}
+						>
+							{millify(globalStats.totalMarkets)}
+						</Card>{' '}
+					</Col>
+					<Col xs={12} sm={12} md={8} lg={6} xl={4.5} bordered>
+						<Card
+							bordered
+							title='24h Volume'
+							style={{ height: '100%', width: '100%' }}
+							extra={
+								<Popover content={'asd'} title='Title'>
+									<InfoCircleOutlined />
+								</Popover>
+							}
+						>
+							{`$${millify(globalStats.total24hVolume)}`}
+						</Card>
 					</Col>
 				</Row>
-				<div className='home-heading-container'>
-					<Title level={2} className='home-title'>
-						Top 10 Cryptos In The World
-					</Title>
-					<Title level={3} className='show-more'>
+
+				<Content>
+					<Title level={3}>Top 10 Cryptos In The World</Title>
+					<Title level={3}>
 						<Link to='/cryptocurrencies'>Show more</Link>
 					</Title>
-				</div>
-				<Cryptocurrencies simplified />
-				<div className='home-heading-container'>
-					<Title level={2} className='home-title'>
-						Latest Crypto News
-					</Title>
-					<Title level={3}>
-						<Link to='/news'>Show more</Link>
-					</Title>
-				</div>
-				<News simplified />
+				</Content>
+				<Content>
+					<Cryptocurrencies simplified />
+					<>
+						<Title level={2}>Latest Crypto News</Title>
+						<Title level={3}>
+							<Link to='/news'>Show more</Link>
+						</Title>
+					</>
+					<News simplified />
+				</Content>
 			</Content>
 		</Layout>
 	);
