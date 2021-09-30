@@ -29,7 +29,7 @@ const News = ({ simplified }) => {
 			<Content>
 				<Row gutter={[10, 10]}>
 					{!simplified && (
-						<Col >
+						<Col>
 							<Select
 								showSearch
 								placeholder='Select a Crypto'
@@ -50,7 +50,7 @@ const News = ({ simplified }) => {
 					<Row gutter={[10, 10]}>
 						{cryptoNews.value.map((news, i) => (
 							<Col key={i} xs={18} sm={18} md={12} lg={12} xl={8}>
-								<Card hoverable title={news.name}>
+								<Card hoverable title={news.name} style={{ height: '100%' }}>
 									<a href={news.url} target='_blank' rel='noreferrer'>
 										<Meta
 											avatar={
@@ -60,8 +60,8 @@ const News = ({ simplified }) => {
 												/>
 											}
 											description={
-												news.description.length > 100
-													? `${news.description.substring(0, 100)}...`
+												news.description.length > 150
+													? `${news.description.substring(0, 150)}...`
 													: news.description
 											}
 										/>
