@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
-import { Card, Typography, Row, Col, Input, Skeleton, Pagination } from 'antd';
+import { Card, Typography, Row, Col, Input, Skeleton } from 'antd';
 import {
 	ArrowUpOutlined,
 	ArrowDownOutlined,
@@ -11,7 +11,7 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 
 const { Search } = Input;
-const { Title } = Typography;
+
 const Cryptocurrencies = ({ simplified }) => {
 	const count = simplified ? 10 : 100;
 	const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
@@ -70,7 +70,7 @@ const Cryptocurrencies = ({ simplified }) => {
 
 			<Row gutter={[10, 10]} style={{ marginTop: '20px' }}>
 				{cryptos?.map((currency) => (
-					<Col xs={12} sm={8} md={6} lg={4} xl={3} bordered>
+					<Col xs={12} sm={8} md={6} lg={6} xl={3} bordered>
 						<Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
 							<Card
 								bordered

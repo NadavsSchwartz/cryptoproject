@@ -1,30 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Space, Typography, Divider, Row, Col } from 'antd';
 
-import {
-	MenuUnfoldOutlined,
-	MenuFoldOutlined,
-	GithubOutlined,
-} from '@ant-design/icons';
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { useGetLatestNftsQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 import millify from 'millify';
 const { Header, Content } = Layout;
-const Navbar = ({ collapsed, setCollapsed }) => {
+const Navbar = ({ collapsed, setCollapsed, screenSize }) => {
 	const { data, isFetching } = useGetLatestNftsQuery();
 	const [latestNft, setLatestNft] = useState([]);
-	const [screenSize, setScreenSize] = useState(undefined);
+	// const [screenSize, setScreenSize] = useState(undefined);
 	const [showNfts, setShowNfts] = useState(true);
 
-	useEffect(() => {
-		const handleResize = () => setScreenSize(window.innerWidth);
 
-		window.addEventListener('resize', handleResize);
-
-		handleResize();
-
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
 
 	useEffect(() => {
 		setLatestNft(data?.data?.nfts);

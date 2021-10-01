@@ -55,7 +55,7 @@ const News = ({ simplified }) => {
 									.
 								</p>
 							</div>
-							<Col style={{ padding: '20px' }}>
+							<Col style={{ paddingBottom: '20px' }}>
 								<Select
 									showSearch
 									allowClear
@@ -111,7 +111,7 @@ const News = ({ simplified }) => {
 													: news.description
 											}
 										/>
-										<div className='provider-container'>
+										<div>
 											<div>
 												<Avatar
 													src={
@@ -120,7 +120,7 @@ const News = ({ simplified }) => {
 													}
 													alt=''
 												/>
-												<Text className='provider-name'>
+												<Text >
 													{news.provider[0]?.name}
 												</Text>
 											</div>

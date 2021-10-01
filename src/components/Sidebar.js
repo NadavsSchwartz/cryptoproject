@@ -12,6 +12,7 @@ import {
 	MenuFoldOutlined,
 	GithubOutlined,
 } from '@ant-design/icons';
+import SubMenu from 'antd/lib/menu/SubMenu';
 
 const { Sider } = Layout;
 const Sidebar = ({ collapsed, setCollapsed }) => {
@@ -42,19 +43,21 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
 				</div>
 				<Menu
 					theme='dark'
-					mode='inline'
-					style={{ boxShadow: 'none', backgroundColor: '#304156' }}
+					style={{
+						boxShadow: 'none',
+						backgroundColor: '#304156',
+					}}
 				>
-					<Menu.Item icon={<FundOutlined />}>
+					<Menu.Item icon={<FundOutlined />} key='cryptocurrencies'>
 						<Link to='/cryptocurrencies'>Cryptocurrencies</Link>
 					</Menu.Item>
-					<Menu.Item icon={<MoneyCollectOutlined />}>
+					<Menu.Item icon={<MoneyCollectOutlined />} key='exchanges'>
 						<Link to='/exchanges'>Exchanges</Link>
 					</Menu.Item>
-					<Menu.Item icon={<BulbOutlined />}>
+					<Menu.Item icon={<BulbOutlined />} key='news'>
 						<Link to='/news'>News</Link>
 					</Menu.Item>
-					<Menu.Item icon={<GithubOutlined />}>
+					<Menu.Item icon={<GithubOutlined />} key='github'>
 						<a
 							target='_blank'
 							rel='noopener noreferrer'

@@ -35,7 +35,7 @@ export const cryptoApi = createApi({
 		getLatestNfts: builder.query({
 			query: () =>
 				createRequest(
-					`nfts?orderBy=auctionCreatedAt&orderDirection=desc&limit=8`
+					`nfts?orderBy=auctionCreatedAt&orderDirection=desc&limit=10`
 				),
 		}),
 	}),

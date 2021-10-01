@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { Layout, Typography, Space } from 'antd';
 
@@ -41,7 +41,22 @@ const routes = [
 ];
 const App = () => {
 	const [collapsed, setCollapsed] = useState(false);
+	const [screenSize, setScreenSize] = useState(undefined);
+	useEffect(() => {
+		const handleResize = () => setScreenSize(window.innerWidth);
 
+		window.addEventListener('resize', handleResize);
+
+		handleResize();
+
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
+
+	useEffect(() => {
+		if (screenSize < 600) {
+			setCollapsed(true);
+		}
+	}, [screenSize]);
 	const handleToggleSidebar = () => {
 		setCollapsed(!collapsed);
 	};
@@ -49,7 +64,9 @@ const App = () => {
 		<Layout style={{ minHeight: '100vh' }}>
 			<Sidebar {...{ collapsed }} />
 			<Layout>
-				<Navbar {...{ collapsed, setCollapsed: handleToggleSidebar }} />
+				<Navbar
+					{...{ collapsed, setCollapsed: handleToggleSidebar, screenSize }}
+				/>
 				<Content
 					style={{
 						padding: 24,

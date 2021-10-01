@@ -14,21 +14,27 @@ const Footer = () => {
 				width: '100%',
 			}}
 		>
-			<Space
+			<div
 				style={{
-					alignSelf: 'center',
+					textAlign: 'center',
 				}}
 			>
-				<Link to='/'>Home</Link>
-				<Link to='/exchanges'>Exchanges</Link>
-				<Link to='/news'>News</Link>
-			</Space>
+				<Space
+					style={{
+						fontSize: '15px',
+					}}
+				>
+					<Link to='/'>Home</Link>
+					<Link to='/exchanges'>Exchanges</Link>
+					<Link to='/news'>News</Link>
+				</Space>
+			</div>
 			<Typography.Title
 				level={5}
 				style={{ color: 'white', textAlign: 'center' }}
 			>
 				Copyright &copy; 2020-{currentYear}
-				<Link to='/'>Cryptoverse Inc.</Link> <br />
+				<Link to='/'>Crypto Inc.</Link> <br />
 				All Rights Reserved.
 			</Typography.Title>
 		</footer>

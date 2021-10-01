@@ -1,18 +1,6 @@
 import React from 'react';
 import millify from 'millify';
-import {
-	Collapse,
-	Row,
-	Col,
-	Typography,
-	Avatar,
-	Layout,
-	Table,
-	Tag,
-	Space,
-	Skeleton,
-} from 'antd';
-import HTMLReactParser from 'html-react-parser';
+import { Typography, Avatar, Layout, Table, Skeleton } from 'antd';
 
 import { useGetExchangesQuery } from '../services/cryptoApi';
 import Loader from './Loader';
@@ -20,7 +8,6 @@ import { Content } from 'antd/lib/layout/layout';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
-const { Panel } = Collapse;
 
 const Exchanges = () => {
 	const { data, isFetching } = useGetExchangesQuery();
