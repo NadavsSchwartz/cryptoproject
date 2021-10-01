@@ -30,6 +30,16 @@ const Homepage = () => {
 	return (
 		<Layout>
 			<Content align='center'>
+				<div style={{ marginTop: '20px' }}>
+					<Title level={3}>Cryptocurrency Quick Stats </Title>
+					<p>
+						This section provides Cryptocurrency data imported from{' '}
+						<a href='https://coinranking.com/' target='_blank' rel='noreferrer'>
+							Coin Ranking
+						</a>
+						.
+					</p>
+				</div>
 				<Row gutter={[10, 10]} align='center'>
 					<Col xs={12} sm={12} md={8} lg={6} xl={4.5} bordered>
 						<Card

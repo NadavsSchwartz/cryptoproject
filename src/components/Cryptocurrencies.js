@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
-import { Card, Row, Col, Input, Skeleton } from 'antd';
+import { Card, Typography, Row, Col, Input, Skeleton, Pagination } from 'antd';
 import {
 	ArrowUpOutlined,
 	ArrowDownOutlined,
@@ -9,8 +9,9 @@ import {
 } from '@ant-design/icons';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import Loader from './Loader';
-const { Search } = Input;
 
+const { Search } = Input;
+const { Title } = Typography;
 const Cryptocurrencies = ({ simplified }) => {
 	const count = simplified ? 10 : 100;
 	const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
@@ -26,17 +27,23 @@ const Cryptocurrencies = ({ simplified }) => {
 
 		setCryptos(filteredData);
 	}, [cryptosList, searchTerm]);
-
+	const { Title } = Typography;
 	if (isFetching) return <Loader />;
 
 	return (
 		<>
+			<div style={{ marginTop: '20px' }}>
+				<Title level={3}>All Cryptocurrency </Title>
+				<p>
+					This section provides Cryptocurrency data imported from{' '}
+					<a href='https://coinranking.com/' target='_blank' rel='noreferrer'>
+						Coin Ranking
+					</a>
+					.
+				</p>
+			</div>
 			{!simplified && (
 				<div>
-					{/* <Input
-						placeholder='Search Cryptocurrency'
-						onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
-					/> */}
 					<Search
 						placeholder='input search text'
 						enterButton='Search'
@@ -49,12 +56,13 @@ const Cryptocurrencies = ({ simplified }) => {
 								}}
 							/>
 						}
-						onSearch={(e) => setSearchTerm(e.target.value.toLowerCase())}
+						onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+						onSearch={(e) => setSearchTerm(e.toLowerCase())}
 					/>
 				</div>
 			)}
 
-			<Row gutter={[10, 10]}>
+			<Row gutter={[10, 10]} style={{ marginTop: '20px' }}>
 				{cryptos?.map((currency) => (
 					<Col xs={12} sm={8} md={6} lg={4} xl={3} bordered>
 						<Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>

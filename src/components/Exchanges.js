@@ -32,22 +32,6 @@ const Exchanges = () => {
 			title: 'Coin Name',
 			dataIndex: 'exchanges',
 			key: 'exchanges',
-			responsive: ['md'],
-			render: (data) => (
-				<>
-					<span style={{ marginRight: '5px' }}>{data[2]}.</span>
-					<Avatar
-						src={data[0]}
-						style={{ verticalAlign: 'middle', marginRight: '5px' }}
-					/>
-					<span>{data[1]}</span>
-				</>
-			),
-		},
-		{
-			title: 'Coin Name',
-			dataIndex: 'exchanges',
-			key: 'exchanges',
 
 			render: (data) => (
 				<>
@@ -60,13 +44,7 @@ const Exchanges = () => {
 				</>
 			),
 		},
-		{
-			title: '24h Trade Volume',
-			dataIndex: '24TradeVolume',
-			key: '24TradeVolume',
-			responsive: ['md'],
-			sorter: (a, b) => a['24TradeVolume'].localeCompare(b['24TradeVolume']),
-		},
+
 		{
 			title: '24h Trade Volume',
 			dataIndex: '24TradeVolume',
@@ -78,23 +56,10 @@ const Exchanges = () => {
 			title: 'Market Share',
 			dataIndex: 'marketShare',
 			key: 'marketShare',
-			responsive: ['md'],
-			sorter: (a, b) => a.marketShare.localeCompare(b.marketShare),
-		},
-		{
-			title: 'Market Share',
-			dataIndex: 'marketShare',
-			key: 'marketShare',
 
 			sorter: (a, b) => a.marketShare.localeCompare(b.marketShare),
 		},
-		{
-			title: 'No. Of Markets',
-			key: 'numberOfMarkets',
-			dataIndex: 'numberOfMarkets',
-			responsive: ['md'],
-			sorter: (a, b) => a.numberOfMarkets - b.numberOfMarkets,
-		},
+
 		{
 			title: 'No. Of Markets',
 			key: 'numberOfMarkets',
@@ -132,21 +97,6 @@ const Exchanges = () => {
 				</div>
 			),
 		},
-		// render: (tags) => (
-		// 	<>
-		// 		{tags.map((tag) => {
-		// 			let color = tag.length > 5 ? 'geekblue' : 'green';
-		// 			if (tag === 'loser') {
-		// 				color = 'volcano';
-		// 			}
-		// 			return (
-		// 				<Tag color={color} key={tag}>
-		// 					{tag.toUpperCase()}
-		// 				</Tag>
-		// 			);
-		// 		})}
-		// 	</>
-		// ),
 	];
 
 	return (
@@ -162,7 +112,7 @@ const Exchanges = () => {
 							target='_blank'
 							rel='noreferrer'
 						>
-							coinranking
+							Coin Ranking
 						</a>
 						.
 					</p>
