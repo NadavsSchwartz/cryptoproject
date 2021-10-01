@@ -20,7 +20,7 @@ const Exchanges = () => {
 			title: 'Coin Name',
 			dataIndex: 'exchanges',
 			key: 'exchanges',
-
+			sorter: (a) => a.exchanges[0].localeCompare(a.exchanges[2]),
 			render: (data) => (
 				<div>
 					<span style={{ marginRight: '5px' }}>{data[2]}.</span>
@@ -39,8 +39,10 @@ const Exchanges = () => {
 			title: '24h Trade Volume',
 			dataIndex: '24TradeVolume',
 			key: '24TradeVolume',
+			defaultSortOrder: 'descend',
 			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
-			sorter: (a, b) => a['24TradeVolume'].localeCompare(b['24TradeVolume']),
+			sorter: (a, b) =>
+				millify(a['24TradeVolume']).localeCompare(millify(b['24TradeVolume'])),
 		},
 		{
 			title: 'Market Share',
@@ -56,7 +58,7 @@ const Exchanges = () => {
 			key: 'numberOfMarkets',
 			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
 			dataIndex: 'numberOfMarkets',
-			sorter: (a, b) => a.numberOfMarkets - b.numberOfMarkets,
+			sorter: (a, b) => millify(a.numberOfMarkets) - millify(b.numberOfMarkets),
 		},
 		{
 			title: 'Verified',
@@ -95,7 +97,7 @@ const Exchanges = () => {
 		<Layout>
 			<Content>
 				<div style={{ marginTop: '20px' }}>
-					<Title level={3}>Top Cryptocurrency Spot Exchanges</Title>
+					<Title level={3}>Top Cryptocurrency Exchanges</Title>
 					<p>
 						Crypto ranks and scores exchanges based on trading volumes in the
 						last 24 hours, all data is provided by{' '}
@@ -110,7 +112,7 @@ const Exchanges = () => {
 					</p>
 				</div>
 				<Table
-					size='middle'
+					showSorterTooltip
 					bordered
 					loading={isFetching}
 					dataSource={
