@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 require('dotenv').config();
 
 const cryptoApiHeaders = {
-	'x-access-token': process.env.COINRANKING_ACCESS_TOKEN,
+	'x-access-token': process.env.REACT_APP_COINRANKING_ACCESS_TOKEN,
 };
 
 const createRequest = (url) => ({ url, headers: cryptoApiHeaders });
