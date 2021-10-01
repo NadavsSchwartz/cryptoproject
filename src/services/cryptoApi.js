@@ -2,8 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 require('dotenv').config();
 
 const cryptoApiHeaders = {
-	'x-access-token':
-		'coinrankingb11dd5d6079f60e918417565de273e895b2fda51e7b353bd',
+	'x-access-token': process.env.COINRANKING_ACCESS_TOKEN,
 };
 
 const createRequest = (url) => ({ url, headers: cryptoApiHeaders });
@@ -11,8 +10,7 @@ const createRequest = (url) => ({ url, headers: cryptoApiHeaders });
 export const cryptoApi = createApi({
 	reducerPath: 'cryptoApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl:
-			'https://cors-anywhere.herokuapp.com/https://api.coinranking.com/v2',
+		baseUrl: 'https://api.coinranking.com/v2',
 	}),
 	endpoints: (builder) => ({
 		getCryptostats: builder.query({
