@@ -9,6 +9,7 @@ import {
 	Card,
 	Popover,
 	Button,
+	Divider,
 } from 'antd';
 import { Link } from 'react-router-dom';
 
@@ -29,7 +30,7 @@ const Homepage = () => {
 
 	return (
 		<Layout>
-			<Content>
+			<Content align='center'>
 				<Content align='center'>
 					<div style={{ marginTop: '20px' }}>
 						<Title level={3}>Cryptocurrency Quick Stats </Title>
@@ -118,22 +119,22 @@ const Homepage = () => {
 						</Col>
 					</Row>
 				</Content>
-				<Content>
+				<Content style={{ marginTop: '100px' }}>
+					<Divider />
 					<Title level={3}>Top 10 Cryptos In The World</Title>
+					<Cryptocurrencies simplified />{' '}
 					<Title level={3}>
-						<Link to='/cryptocurrencies'>Show more</Link>
+						<Link to='/cryptocurrencies'>Discover more coins</Link>
 					</Title>
 				</Content>
-				<Content>
-					<Cryptocurrencies simplified />
-					<>
-						<Title level={2}>Latest Crypto News</Title>
-						<Title level={3}>
-							<Link to='/news'>Show more</Link>
-						</Title>
-					</>
-					<News simplified />
+				<Content style={{ marginTop: '100px' }}>
+					<Divider />
+					<Title level={2}>Latest Crypto News</Title>
 				</Content>
+				<News simplified />
+				<Title level={3}>
+					<Link to='/news'>Discover more news</Link>
+				</Title>
 			</Content>
 		</Layout>
 	);

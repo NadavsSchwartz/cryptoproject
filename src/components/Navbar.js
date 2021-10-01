@@ -1,53 +1,62 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Menu, Typography, Avatar, Layout } from 'antd';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Layout, Badge, Popover, Empty } from 'antd';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import {
-	HomeOutlined,
-	MoneyCollectOutlined,
-	BulbOutlined,
-	FundOutlined,
-	MenuOutlined,
-	AppstoreOutlined,
+	PoweroffOutlined,
+	MenuUnfoldOutlined,
+	MenuFoldOutlined,
+	BellFilled,
+	BugFilled,
+	GithubOutlined,
+	FullscreenExitOutlined,
+	FullscreenOutlined,
 } from '@ant-design/icons';
-import SubMenu from 'antd/lib/menu/SubMenu';
 const { Header } = Layout;
-const Navbar = () => {
+const Navbar = ({ collapsed, setCollapsed }) => {
 	return (
-		<Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-			<div
-				style={{
-					float: 'left',
-					width: '120px',
-					height: '30px',
-					margin: '9px 16px 26px 16px',
-				}}
-			>
-				<Typography.Title level={2}>
-					<Link style={{ color: 'white' }} to='/'>
-						Crypto
-					</Link>
-				</Typography.Title>
+		<Header
+			style={{
+				zIndex: '1',
+				height: '60px',
+				lineHeight: '60px',
+				paddingLeft: '20px',
+				paddingRight: '20px',
+				background: '#fff',
+				boxShadow: '0 1px 3px rgba(0, 0, 0, .2)',
+			}}
+		>
+			<div style={{ float: 'left' }}>
+				{collapsed ? (
+					<MenuUnfoldOutlined
+						onClick={setCollapsed}
+						style={{ cursor: 'pointer', fontSize: '20px' }}
+					/>
+				) : (
+					<MenuFoldOutlined
+						onClick={setCollapsed}
+						style={{ cursor: 'pointer', fontSize: '20px' }}
+					/>
+				)}
 			</div>
-
-			<Menu theme='dark' mode='horizontal' style={{ float: 'right' }}>
-				<SubMenu
-					icon={
-						<AppstoreOutlined
-							style={{ fontSize: '20px', paddingTop: '10px' }}
-						/>
-					}
-				>
-					<Menu.Item icon={<FundOutlined />}>
-						<Link to='/cryptocurrencies'>Cryptocurrencies</Link>
-					</Menu.Item>
-					<Menu.Item icon={<MoneyCollectOutlined />}>
-						<Link to='/exchanges'>Exchanges</Link>
-					</Menu.Item>
-					<Menu.Item icon={<BulbOutlined />}>
-						<Link to='/news'>News</Link>
-					</Menu.Item>
-				</SubMenu>
-			</Menu>
+			{/* <ul className='right'>
+				<li onClick={handleFullscreen}>
+					{isFullscreen ? <FullscreenOutlined /> : <FullscreenExitOutlined />}
+				</li>
+				<li>
+					<a href={config.github.bug} target='_blank' rel='noopener noreferrer'>
+						<BugFilled />
+					</a>
+				</li>
+				<li>
+					<a
+						href={config.github.repositoryUrl}
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						<GithubOutlined />
+					</a>
+				</li>
+			</ul> */}
 		</Header>
 	);
 };

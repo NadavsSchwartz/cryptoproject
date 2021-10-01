@@ -27,7 +27,7 @@ const News = ({ simplified }) => {
 	const { data } = useGetCryptosQuery(100);
 	const { data: cryptoNews } = useGetCryptoNewsQuery({
 		newsCategory,
-		count: simplified ? 6 : 12,
+		count: simplified ? 8 : 12,
 	});
 	const { Meta } = Card;
 	const [loading, SetLoading] = useState(false);
@@ -37,10 +37,10 @@ const News = ({ simplified }) => {
 	return (
 		<Layout>
 			<Content>
-				<Row>
+				<Row style={{ textAlign: 'center' }}>
 					{!simplified && (
-						<>
-							<div style={{ marginTop: '20px' }}>
+						<Content>
+							<div>
 								<Title level={3}>Top Cryptocurrency News</Title>
 								<p>
 									This section provides Cryptocurrency News imported from Bing
@@ -55,9 +55,10 @@ const News = ({ simplified }) => {
 									.
 								</p>
 							</div>
-							<Col style={{ margin: '25px' }} span={8} offset={8}>
+							<Col style={{ padding: '20px' }}>
 								<Select
 									showSearch
+									allowClear
 									placeholder='Select a Crypto'
 									optionFilterProp='children'
 									onChange={(value) => {
@@ -80,14 +81,14 @@ const News = ({ simplified }) => {
 									))}
 								</Select>
 							</Col>
-						</>
+						</Content>
 					)}
 				</Row>
 				<Row gutter={[10, 10]}>
 					{cryptoNews.value.map((news, i) => (
 						<Col
 							key={i}
-							xs={12}
+							xs={24}
 							sm={12}
 							md={12}
 							lg={8}
@@ -105,8 +106,8 @@ const News = ({ simplified }) => {
 												/>
 											}
 											description={
-												news.description.length > 150
-													? `${news.description.substring(0, 150)}...`
+												news.description.length > 100
+													? `${news.description.substring(0, 100)}...`
 													: news.description
 											}
 										/>
