@@ -32,34 +32,40 @@ const Cryptocurrencies = ({ simplified }) => {
 
 	return (
 		<>
-			<div style={{ marginTop: '20px' }}>
-				<Title level={3}>All Cryptocurrency </Title>
-				<p>
-					This section provides Cryptocurrency data imported from{' '}
-					<a href='https://coinranking.com/' target='_blank' rel='noreferrer'>
-						Coin Ranking
-					</a>
-					.
-				</p>
-			</div>
 			{!simplified && (
-				<div>
-					<Search
-						placeholder='input search text'
-						enterButton='Search'
-						size='large'
-						suffix={
-							<AudioOutlined
-								style={{
-									fontSize: 16,
-									color: '#1890ff',
-								}}
-							/>
-						}
-						onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
-						onSearch={(e) => setSearchTerm(e.toLowerCase())}
-					/>
-				</div>
+				<>
+					<div style={{ marginTop: '20px' }}>
+						<Title level={3}>All Cryptocurrency </Title>
+						<p>
+							This section provides Cryptocurrency data imported from{' '}
+							<a
+								href='https://coinranking.com/'
+								target='_blank'
+								rel='noreferrer'
+							>
+								Coin Ranking
+							</a>
+							.
+						</p>
+					</div>
+					<div>
+						<Search
+							placeholder='input search text'
+							enterButton='Search'
+							size='large'
+							suffix={
+								<AudioOutlined
+									style={{
+										fontSize: 16,
+										color: '#1890ff',
+									}}
+								/>
+							}
+							onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+							onSearch={(e) => setSearchTerm(e.toLowerCase())}
+						/>
+					</div>
+				</>
 			)}
 
 			<Row gutter={[10, 10]} style={{ marginTop: '20px' }}>

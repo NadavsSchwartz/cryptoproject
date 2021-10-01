@@ -10,6 +10,7 @@ import {
 	Table,
 	Tag,
 	Space,
+	Skeleton,
 } from 'antd';
 import HTMLReactParser from 'html-react-parser';
 
@@ -34,14 +35,16 @@ const Exchanges = () => {
 			key: 'exchanges',
 
 			render: (data) => (
-				<>
+				<div>
 					<span style={{ marginRight: '5px' }}>{data[2]}.</span>
-					<Avatar
-						src={data[0]}
-						style={{ verticalAlign: 'middle', marginRight: '5px' }}
-					/>
+					<Skeleton active loading={isFetching}>
+						<Avatar
+							src={data[0]}
+							style={{ verticalAlign: 'middle', marginRight: '5px' }}
+						/>
+					</Skeleton>
 					<span>{data[1]}</span>
-				</>
+				</div>
 			),
 		},
 
@@ -49,13 +52,14 @@ const Exchanges = () => {
 			title: '24h Trade Volume',
 			dataIndex: '24TradeVolume',
 			key: '24TradeVolume',
-
+			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
 			sorter: (a, b) => a['24TradeVolume'].localeCompare(b['24TradeVolume']),
 		},
 		{
 			title: 'Market Share',
 			dataIndex: 'marketShare',
 			key: 'marketShare',
+			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
 
 			sorter: (a, b) => a.marketShare.localeCompare(b.marketShare),
 		},
@@ -63,6 +67,7 @@ const Exchanges = () => {
 		{
 			title: 'No. Of Markets',
 			key: 'numberOfMarkets',
+			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
 			dataIndex: 'numberOfMarkets',
 			sorter: (a, b) => a.numberOfMarkets - b.numberOfMarkets,
 		},
@@ -118,6 +123,8 @@ const Exchanges = () => {
 					</p>
 				</div>
 				<Table
+					size='middle'
+					bordered
 					loading={isFetching}
 					dataSource={
 						!isFetching
@@ -135,47 +142,6 @@ const Exchanges = () => {
 					}
 					columns={columns}
 				/>
-				{/* <Row>
-					<Col span={6}>Exchanges</Col>
-					<Col span={6}>24h Trade Volume</Col>
-					<Col span={6}>Markets</Col>
-					<Col span={6}>Change</Col>
-				</Row>
-				<Row>
-					{exchangesList.map((exchange) => (
-						<Col span={24}>
-							<Collapse>
-								<Panel
-									key={exchange.uuid}
-									showArrow={false}
-									header={
-										<Row key={exchange.uuid}>
-											<Col span={6}>
-												<Text>
-													<strong>{exchange.rank}.</strong>
-												</Text>
-												<Avatar
-													className='exchange-image'
-													src={exchange.iconUrl}
-												/>
-												<Text>
-													<strong>{exchange.name}</strong>
-												</Text>
-											</Col>
-											<Col span={6}>${millify(exchange['24hVolume'])}</Col>
-											<Col span={6}>{millify(exchange.numberOfMarkets)}</Col>
-											<Col span={6}>{millify(exchange.marketShare)}%</Col>
-										</Row>
-									}
-								>
-									{HTMLReactParser(
-										exchange.description || exchange.coinrankingUrl
-									)}
-								</Panel>
-							</Collapse>
-						</Col>
-					))} 
-				</Row>*/}
 			</Content>
 		</Layout>
 	);

@@ -37,48 +37,50 @@ const News = ({ simplified }) => {
 	return (
 		<Layout>
 			<Content>
-				<div style={{ marginTop: '20px' }}>
-					<Title level={3}>Top Cryptocurrency News</Title>
-					<p>
-						This section provides Cryptocurrency News imported from Bing news
-						API through{' '}
-						<a
-							href='https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/bing-news-search1/'
-							target='_blank'
-							rel='noreferrer'
-						>
-							RapidAPI
-						</a>
-						.
-					</p>
-				</div>
-
 				<Row>
 					{!simplified && (
-						<Col style={{ margin: '25px' }} span={8} offset={8}>
-							<Select
-								showSearch
-								placeholder='Select a Crypto'
-								optionFilterProp='children'
-								onChange={(value) => {
-									SetLoading(true);
-									setTimeout(function () {
-										setNewsCategory(value);
-										SetLoading(false);
-									}, 1000);
-								}}
-								filterOption={(input, option) =>
-									option.children.toLowerCase().indexOf(input.toLowerCase()) >=
-									0
-								}
-								style={{ width: '250px' }}
-							>
-								<Option value='Cryptocurency'>All Cryptocurrency</Option>
-								{data?.data?.coins?.map((currency) => (
-									<Option value={currency.name}>{currency.name}</Option>
-								))}
-							</Select>
-						</Col>
+						<>
+							<div style={{ marginTop: '20px' }}>
+								<Title level={3}>Top Cryptocurrency News</Title>
+								<p>
+									This section provides Cryptocurrency News imported from Bing
+									news API through{' '}
+									<a
+										href='https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/bing-news-search1/'
+										target='_blank'
+										rel='noreferrer'
+									>
+										RapidAPI
+									</a>
+									.
+								</p>
+							</div>
+							<Col style={{ margin: '25px' }} span={8} offset={8}>
+								<Select
+									showSearch
+									placeholder='Select a Crypto'
+									optionFilterProp='children'
+									onChange={(value) => {
+										SetLoading(true);
+										setTimeout(function () {
+											setNewsCategory(value);
+											SetLoading(false);
+										}, 1000);
+									}}
+									filterOption={(input, option) =>
+										option.children
+											.toLowerCase()
+											.indexOf(input.toLowerCase()) >= 0
+									}
+									style={{ width: '250px' }}
+								>
+									<Option value='Cryptocurency'>All Cryptocurrency</Option>
+									{data?.data?.coins?.map((currency) => (
+										<Option value={currency.name}>{currency.name}</Option>
+									))}
+								</Select>
+							</Col>
+						</>
 					)}
 				</Row>
 				<Row gutter={[10, 10]}>

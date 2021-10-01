@@ -7,7 +7,9 @@ import {
 	BulbOutlined,
 	FundOutlined,
 	MenuOutlined,
+	AppstoreOutlined,
 } from '@ant-design/icons';
+import SubMenu from 'antd/lib/menu/SubMenu';
 const { Header } = Layout;
 const Navbar = () => {
 	return (
@@ -21,19 +23,30 @@ const Navbar = () => {
 				}}
 			>
 				<Typography.Title level={2}>
-					<Link to='/'>Crypto</Link>
+					<Link style={{ color: 'white' }} to='/'>
+						Crypto
+					</Link>
 				</Typography.Title>
 			</div>
-			<Menu theme='dark' mode='horizontal'>
-				<Menu.Item icon={<FundOutlined />}>
-					<Link to='/cryptocurrencies'>Cryptocurrencies</Link>
-				</Menu.Item>
-				<Menu.Item icon={<MoneyCollectOutlined />}>
-					<Link to='/exchanges'>Exchanges</Link>
-				</Menu.Item>
-				<Menu.Item icon={<BulbOutlined />}>
-					<Link to='/news'>News</Link>
-				</Menu.Item>
+
+			<Menu theme='dark' mode='horizontal' style={{ float: 'right' }}>
+				<SubMenu
+					icon={
+						<AppstoreOutlined
+							style={{ fontSize: '20px', paddingTop: '10px' }}
+						/>
+					}
+				>
+					<Menu.Item icon={<FundOutlined />}>
+						<Link to='/cryptocurrencies'>Cryptocurrencies</Link>
+					</Menu.Item>
+					<Menu.Item icon={<MoneyCollectOutlined />}>
+						<Link to='/exchanges'>Exchanges</Link>
+					</Menu.Item>
+					<Menu.Item icon={<BulbOutlined />}>
+						<Link to='/news'>News</Link>
+					</Menu.Item>
+				</SubMenu>
 			</Menu>
 		</Header>
 	);

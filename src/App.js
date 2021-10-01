@@ -12,6 +12,7 @@ import {
 } from './components';
 import './App.css';
 import { Content } from 'antd/lib/layout/layout';
+import NoMatch from './components/NoMatch';
 
 const routes = [
 	{ path: '/', name: 'Homepage', Component: Homepage },
@@ -30,6 +31,11 @@ const routes = [
 		path: '/news',
 		name: 'News',
 		Component: News,
+	},
+	{
+		path: '*',
+		name: 'No Match',
+		Component: NoMatch,
 	},
 ];
 const App = () => (
