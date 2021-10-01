@@ -10,6 +10,7 @@ import {
 	AppstoreOutlined,
 	MenuUnfoldOutlined,
 	MenuFoldOutlined,
+	GithubOutlined,
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
@@ -52,6 +53,15 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
 					</Menu.Item>
 					<Menu.Item icon={<BulbOutlined />}>
 						<Link to='/news'>News</Link>
+					</Menu.Item>
+					<Menu.Item icon={<GithubOutlined />}>
+						<a
+							target='_blank'
+							rel='noopener noreferrer'
+							href='https://github.com/NadavsSchwartz/cryptoproject'
+						>
+							My Github
+						</a>
 					</Menu.Item>
 				</Menu>
 			</Sider>

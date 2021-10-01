@@ -32,6 +32,12 @@ export const cryptoApi = createApi({
 			query: ({ coinId, timeperiod }) =>
 				createRequest(`coin/${coinId}/history?timePeriod=${timeperiod}`),
 		}),
+		getLatestNfts: builder.query({
+			query: () =>
+				createRequest(
+					`nfts?orderBy=auctionCreatedAt&orderDirection=desc&limit=8`
+				),
+		}),
 	}),
 });
 
@@ -41,4 +47,5 @@ export const {
 	useGetCryptoDetailsQuery,
 	useGetExchangesQuery,
 	useGetCryptoHistoryQuery,
+	useGetLatestNftsQuery,
 } = cryptoApi;
