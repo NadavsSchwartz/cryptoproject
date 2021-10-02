@@ -10,7 +10,7 @@ const createRequest = (url) => ({ url, headers: cryptoApiHeaders });
 export const cryptoApi = createApi({
 	reducerPath: 'cryptoApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://api.coinranking.com/v2',
+		baseUrl: 'https://cors-anywhere.herokuapp.com/https://api.coinranking.com/v2',
 	}),
 	endpoints: (builder) => ({
 		getCryptostats: builder.query({
