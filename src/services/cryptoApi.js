@@ -2,7 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 require('dotenv').config();
 
 const cryptoApiHeaders = {
-	'x-access-token': process.env.REACT_APP_COINRANKING_ACCESS_TOKEN,
+	'x-rapidapi-host': 'coinranking1.p.rapidapi.com/',
+	'x-rapidapi-key': 'b00b36ccb8msh742d2851ab5e32cp178798jsne7633fa8bb90',
 };
 
 const createRequest = (url) => ({ url, headers: cryptoApiHeaders });
@@ -10,7 +11,8 @@ const createRequest = (url) => ({ url, headers: cryptoApiHeaders });
 export const cryptoApi = createApi({
 	reducerPath: 'cryptoApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://api.coinranking.com/v2',
+		baseUrl:
+			'https://cors-anywhere.herokuapp.com/https://coinranking1.p.rapidapi.com',
 	}),
 	endpoints: (builder) => ({
 		getCryptostats: builder.query({
@@ -28,7 +30,7 @@ export const cryptoApi = createApi({
 		}),
 		getCryptoHistory: builder.query({
 			query: ({ coinId, timeperiod }) =>
-				createRequest(`coin/${coinId}/history?timePeriod=${timeperiod}`),
+				createRequest(`coin/${coinId}/history/${timeperiod}`),
 		}),
 		getLatestNfts: builder.query({
 			query: () =>

@@ -37,7 +37,7 @@ const CryptoDetails = () => {
 
 	if (isFetching) return <Loader />;
 
-	const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+	const time = ['24h', '7d', '30d', '1y', '5y'];
 
 	const stats = [
 		{
@@ -78,7 +78,7 @@ const CryptoDetails = () => {
 		},
 		{
 			title: 'Aprroved Supply',
-			value: cryptoDetails.supply.confirmed ? (
+			value: cryptoDetails.approvedSupply ? (
 				<CheckOutlined />
 			) : (
 				<StopOutlined />
@@ -87,12 +87,12 @@ const CryptoDetails = () => {
 		},
 		{
 			title: 'Total Supply',
-			value: `$ ${millify(cryptoDetails.supply.total)}`,
+			value: `$ ${millify(cryptoDetails.totalSupply)}`,
 			icon: <ExclamationCircleOutlined />,
 		},
 		{
 			title: 'Circulating Supply',
-			value: `$ ${millify(cryptoDetails.supply.circulating)}`,
+			value: `$ ${millify(cryptoDetails.circulatingSupply)}`,
 			icon: <ExclamationCircleOutlined />,
 		},
 	];
@@ -122,7 +122,6 @@ const CryptoDetails = () => {
 				coinHistory={coinHistory}
 				currentPrice={millify(cryptoDetails.price)}
 				coinName={cryptoDetails.name}
-
 			/>
 			<Col className='stats-container'>
 				<Col className='coin-value-statistics'>

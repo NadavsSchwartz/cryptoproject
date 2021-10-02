@@ -6,6 +6,7 @@ import { useGetExchangesQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 import { Content } from 'antd/lib/layout/layout';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
 
@@ -35,15 +36,15 @@ const Exchanges = () => {
 			),
 		},
 
-		{
-			title: '24h Trade Volume',
-			dataIndex: '24TradeVolume',
-			key: '24TradeVolume',
-			defaultSortOrder: 'descend',
-			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
-			sorter: (a, b) =>
-				millify(a['24TradeVolume']).localeCompare(millify(b['24TradeVolume'])),
-		},
+		// {
+		// 	title: '24h Trade Volume',
+		// 	dataIndex: '24TradeVolume',
+		// 	key: '24TradeVolume',
+		// 	defaultSortOrder: 'descend',
+		// 	render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
+		// 	sorter: (a, b) =>
+		// 		millify(a['24TradeVolume']).localeCompare(millify(b['24TradeVolume'])),
+		// },
 		{
 			title: 'Market Share',
 			dataIndex: 'marketShare',
@@ -61,34 +62,24 @@ const Exchanges = () => {
 			sorter: (a, b) => millify(a.numberOfMarkets) - millify(b.numberOfMarkets),
 		},
 		{
-			title: 'Verified',
-			dataIndex: 'verified',
-			key: 'verified',
+			title: 'Volume',
+			dataIndex: 'volume',
+			key: 'volume',
 			responsive: ['md'],
 			render: (data) => (
-				<div style={{ textAlign: 'center' }}>
-					{data ? (
-						<CheckOutlined style={{ color: '#3f8600' }} />
-					) : (
-						<CloseOutlined style={{ color: '#cf1322' }} />
-					)}
-				</div>
+				<div style={{ textAlign: 'center' }}>{millify(data)}</div>
 			),
 		},
 
 		{
-			title: 'Recommended',
-			dataIndex: 'recommended',
-			key: 'recommended',
+			title: 'websiteUrl',
+			dataIndex: 'websiteUrl',
+			key: 'websiteUrl',
 			responsive: ['md'],
 			render: (data) => (
-				<div style={{ textAlign: 'center' }}>
-					{data ? (
-						<CheckOutlined style={{ color: '#3f8600' }} />
-					) : (
-						<CloseOutlined style={{ color: '#cf1322' }} />
-					)}
-				</div>
+				<Link to={data[0]} style={{ textAlign: 'center', cursor: 'pointer' }}>
+					{data[1]} official site
+				</Link>
 			),
 		},
 	];
@@ -120,12 +111,11 @@ const Exchanges = () => {
 							? exchangesList.map((exchange) => ({
 									key: exchange.uuid,
 									exchanges: [exchange.iconUrl, exchange.name, exchange.rank],
-									['24TradeVolume']: millify(exchange['24hVolume']),
 									markets: '$' + `${millify(exchange.numberOfMarkets)}`,
 									marketShare: millify(exchange.marketShare) + '%',
 									numberOfMarkets: exchange.numberOfMarkets,
-									verified: exchange.verified,
-									recommended: exchange.recommended,
+									volume: exchange.volume,
+									websiteUrl: [exchange.websiteUrl, exchange.name],
 							  }))
 							: ''
 					}
