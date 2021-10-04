@@ -10,7 +10,7 @@ const createRequest = (url) => ({ url, headers: nftApiHeaders });
 export const nftApi = createApi({
 	reducerPath: 'nftApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: '/crypto_data/',
+		baseUrl: 'https://crypto-currency-backend.herokuapp.com/api/v1/crypto_data/',
 	}),
 	endpoints: (builder) => ({
 		getLatestNfts: builder.query({

@@ -10,7 +10,8 @@ const createRequest = (url) => ({ url, headers: cryptoApiHeaders });
 export const cryptoApi = createApi({
 	reducerPath: 'cryptoApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: '/crypto_data',
+		baseUrl:
+			'https://crypto-currency-backend.herokuapp.com/api/v1/crypto_data',
 	}),
 	endpoints: (builder) => ({
 		getCryptostats: builder.query({
