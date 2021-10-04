@@ -22,6 +22,7 @@ import {
 	InfoCircleOutlined,
 	StockOutlined,
 } from '@ant-design/icons';
+import AlanAi from './AlanAi';
 
 const { Title } = Typography;
 
@@ -42,6 +43,7 @@ const Homepage = () => {
 	return (
 		<Layout>
 			<Content align='center'>
+				{/* <AlanAi /> */}
 				<Content align='center'>
 					<div style={{ marginTop: '20px' }}>
 						<Title level={3}>Cryptocurrency Quick Stats </Title>
@@ -63,7 +65,10 @@ const Homepage = () => {
 								<Col xs={24} sm={12} md={8} lg={6} xl={4} bordered key={key}>
 									<Card
 										extra={
-											<Popover content={infoDataContent[index]} title={key}>
+											<Popover
+												content={infoDataContent[index]}
+												title={key.toLocaleUpperCase()}
+											>
 												<InfoCircleOutlined />
 											</Popover>
 										}
@@ -71,7 +76,9 @@ const Homepage = () => {
 										title={key}
 										style={{ height: '100%', width: '100%' }}
 									>
-										{millify(value)}
+										{index === 3 || index === 4
+											? `$${millify(value)}`
+											: millify(value)}
 									</Card>
 								</Col>
 							))}

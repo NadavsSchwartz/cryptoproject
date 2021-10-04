@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Col, Row, Typography, Select } from 'antd';
+import { Col, Row, Typography, Select, Avatar } from 'antd';
 import {
 	MoneyCollectOutlined,
 	DollarCircleOutlined,
@@ -37,7 +37,7 @@ const CryptoDetails = () => {
 
 	if (isFetching) return <Loader />;
 
-	const time = ['24h', '7d', '30d', '1y', '5y'];
+	const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
 	const stats = [
 		{
@@ -78,7 +78,7 @@ const CryptoDetails = () => {
 		},
 		{
 			title: 'Aprroved Supply',
-			value: cryptoDetails.approvedSupply ? (
+			value: cryptoDetails.supply.confirmed ? (
 				<CheckOutlined />
 			) : (
 				<StopOutlined />
@@ -87,12 +87,12 @@ const CryptoDetails = () => {
 		},
 		{
 			title: 'Total Supply',
-			value: `$ ${millify(cryptoDetails.totalSupply)}`,
+			value: `$ ${millify(cryptoDetails.supply.total)}`,
 			icon: <ExclamationCircleOutlined />,
 		},
 		{
 			title: 'Circulating Supply',
-			value: `$ ${millify(cryptoDetails.circulatingSupply)}`,
+			value: `$ ${millify(cryptoDetails.supply.circulating)}`,
 			icon: <ExclamationCircleOutlined />,
 		},
 	];
@@ -101,6 +101,7 @@ const CryptoDetails = () => {
 		<Col className='coin-detail-container'>
 			<Col className='coin-heading-container'>
 				<Title level={2} className='coin-name'>
+					<Avatar src={data?.data?.coin.iconUrl}></Avatar>
 					{data?.data?.coin.name} ({data?.data?.coin.symbol}) Price
 				</Title>
 				<p>

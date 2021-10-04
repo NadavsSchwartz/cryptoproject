@@ -27,7 +27,7 @@ const News = ({ simplified }) => {
 	const { data } = useGetCryptosQuery(100);
 	const { data: cryptoNews } = useGetCryptoNewsQuery({
 		newsCategory,
-		count: simplified ? 8 : 12,
+		dayCount: simplified ? 8 : 12,
 	});
 	const { Meta } = Card;
 	const [loading, SetLoading] = useState(false);
@@ -120,9 +120,7 @@ const News = ({ simplified }) => {
 													}
 													alt=''
 												/>
-												<Text >
-													{news.provider[0]?.name}
-												</Text>
+												<Text>{news.provider[0]?.name}</Text>
 											</div>
 											<Text>
 												{moment(news.datePublished).startOf('ss').fromNow()}

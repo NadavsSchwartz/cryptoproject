@@ -9,7 +9,6 @@ import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
-
 const Exchanges = () => {
 	const { data, isFetching } = useGetExchangesQuery();
 	const exchangesList = data?.data?.exchanges;
@@ -36,15 +35,15 @@ const Exchanges = () => {
 			),
 		},
 
-		// {
-		// 	title: '24h Trade Volume',
-		// 	dataIndex: '24TradeVolume',
-		// 	key: '24TradeVolume',
-		// 	defaultSortOrder: 'descend',
-		// 	render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
-		// 	sorter: (a, b) =>
-		// 		millify(a['24TradeVolume']).localeCompare(millify(b['24TradeVolume'])),
-		// },
+		{
+			title: '24h Trade Volume',
+			dataIndex: '24TradeVolume',
+			key: '24TradeVolume',
+			defaultSortOrder: 'descend',
+			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
+			sorter: (a, b) =>
+				millify(a['24TradeVolume']).localeCompare(millify(b['24TradeVolume'])),
+		},
 		{
 			title: 'Market Share',
 			dataIndex: 'marketShare',
@@ -62,24 +61,34 @@ const Exchanges = () => {
 			sorter: (a, b) => millify(a.numberOfMarkets) - millify(b.numberOfMarkets),
 		},
 		{
-			title: 'Volume',
-			dataIndex: 'volume',
-			key: 'volume',
+			title: 'Verified',
+			dataIndex: 'verified',
+			key: 'verified',
 			responsive: ['md'],
 			render: (data) => (
-				<div style={{ textAlign: 'center' }}>{millify(data)}</div>
+				<div style={{ textAlign: 'center' }}>
+					{data ? (
+						<CheckOutlined style={{ color: '#3f8600' }} />
+					) : (
+						<CloseOutlined style={{ color: '#cf1322' }} />
+					)}
+				</div>
 			),
 		},
 
 		{
-			title: 'websiteUrl',
-			dataIndex: 'websiteUrl',
-			key: 'websiteUrl',
+			title: 'Recommended',
+			dataIndex: 'recommended',
+			key: 'recommended',
 			responsive: ['md'],
 			render: (data) => (
-				<Link to={data[0]} style={{ textAlign: 'center', cursor: 'pointer' }}>
-					{data[1]} official site
-				</Link>
+				<div style={{ textAlign: 'center' }}>
+					{data ? (
+						<CheckOutlined style={{ color: '#3f8600' }} />
+					) : (
+						<CloseOutlined style={{ color: '#cf1322' }} />
+					)}
+				</div>
 			),
 		},
 	];
@@ -111,11 +120,12 @@ const Exchanges = () => {
 							? exchangesList.map((exchange) => ({
 									key: exchange.uuid,
 									exchanges: [exchange.iconUrl, exchange.name, exchange.rank],
+									['24TradeVolume']: millify(exchange['24hVolume']),
 									markets: '$' + `${millify(exchange.numberOfMarkets)}`,
 									marketShare: millify(exchange.marketShare) + '%',
 									numberOfMarkets: exchange.numberOfMarkets,
-									volume: exchange.volume,
-									websiteUrl: [exchange.websiteUrl, exchange.name],
+									verified: exchange.verified,
+									recommended: exchange.recommended,
 							  }))
 							: ''
 					}

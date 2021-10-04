@@ -71,7 +71,7 @@ const Cryptocurrencies = ({ simplified }) => {
 			<Row gutter={[10, 10]} style={{ marginTop: '20px' }}>
 				{cryptos?.map((currency) => (
 					<Col xs={12} sm={8} md={6} lg={6} xl={3} bordered>
-						<Link key={currency.id} to={`/crypto/${currency.id}`}>
+						<Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
 							<Card
 								bordered
 								size='small'

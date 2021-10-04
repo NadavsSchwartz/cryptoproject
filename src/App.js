@@ -15,6 +15,7 @@ import './App.css';
 import { Content } from 'antd/lib/layout/layout';
 import NoMatch from './components/NoMatch';
 import Footer from './components/Footer';
+import alanBtn from '@alan-ai/alan-sdk-web';
 const routes = [
 	{ path: '/', name: 'Homepage', Component: Homepage },
 	{ path: '/exchanges', name: 'Exchanges', Component: Exchanges },
@@ -43,6 +44,14 @@ const App = () => {
 	const [collapsed, setCollapsed] = useState(false);
 	const [screenSize, setScreenSize] = useState(undefined);
 	useEffect(() => {
+		alanBtn({
+			key: '9a97f2d734b2401703b2e81114d7d4262e956eca572e1d8b807a3e2338fdd0dc/stage',
+			onCommand: ({ command }) => {
+				if (command === 'testCommand') {
+					alert('this is a test command');
+				}
+			},
+		});
 		const handleResize = () => setScreenSize(window.innerWidth);
 
 		window.addEventListener('resize', handleResize);
