@@ -16,30 +16,30 @@ import { Content } from 'antd/lib/layout/layout';
 import NoMatch from './components/NoMatch';
 import Footer from './components/Footer';
 import alanBtn from '@alan-ai/alan-sdk-web';
-const routes = [
-	{ path: '/', name: 'Homepage', Component: Homepage },
-	{ path: '/exchanges', name: 'Exchanges', Component: Exchanges },
-	{
-		path: '/cryptocurrencies',
-		name: 'Cryptocurrencies',
-		Component: Cryptocurrencies,
-	},
-	{
-		path: '/crypto/:coinId',
-		name: 'CryptoDetails',
-		Component: CryptoDetails,
-	},
-	{
-		path: '/news',
-		name: 'News',
-		Component: News,
-	},
-	{
-		path: '*',
-		name: 'No Match',
-		Component: NoMatch,
-	},
-];
+// const routes = [
+// 	{ path: '/', name: 'Homepage', Component: Homepage },
+// 	{ path: '/exchanges', name: 'Exchanges', Component: Exchanges },
+// 	{
+// 		path: '/cryptocurrencies',
+// 		name: 'Cryptocurrencies',
+// 		Component: Cryptocurrencies,
+// 	},
+// 	{
+// 		path: '/crypto/:coinId',
+// 		name: 'CryptoDetails',
+// 		Component: CryptoDetails,
+// 	},
+// 	{
+// 		path: '/news',
+// 		name: 'News',
+// 		Component: News,
+// 	},
+// 	{
+// 		path: '*',
+// 		name: 'No Match',
+// 		Component: NoMatch,
+// 	},
+// ];
 const App = () => {
 	const [collapsed, setCollapsed] = useState(false);
 	const [screenSize, setScreenSize] = useState(undefined);
@@ -84,13 +84,23 @@ const App = () => {
 					}}
 				>
 					<Layout>
-						<Switch>
-							{routes.map(({ path, Component }) => (
-								<Route key={path} exact path={path}>
-									<Component />
-								</Route>
-							))}
-						</Switch>
+						 <Switch>
+            <Route exact path="/">
+              <Homepage />
+            </Route>
+            <Route exact path="/exchanges">
+              <Exchanges />
+            </Route>
+            <Route exact path="/cryptocurrencies">
+              <Cryptocurrencies />
+            </Route>
+            <Route exact path="/crypto/:coinId">
+              <CryptoDetails />
+            </Route>
+            <Route exact path="/news">
+              <News />
+            </Route>
+          </Switch>
 					</Layout>
 				</Content>
 				<Footer />
