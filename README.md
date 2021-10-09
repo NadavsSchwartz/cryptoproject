@@ -37,11 +37,15 @@ The following requirements are necessary to run this application:
 - Rails
 - Postgresql
 
-
-### Back End REPO for instructions
+### Back End REPO with instructions
 [CryptoApp Back end](https://github.com/NadavsSchwartz/-crypto_backend)
 
-Please have Node.js & React.js installed prior to running this application.
+## Run
+To use Garden Helper, visit the file's repo on Github.
+
+Please have ruby and rails installed prior to running the back end, as well as the [other dependencies from the Back End repo](https://github.com/NadavsSchwartz/-crypto_backend#dependencies).
+
+Please have Node.js & React.js installed prior to running the Front end application.
 
 After unzipping and saving the contents to the desired directory, run 'npm install' to install all the packages required for this program.
 
