@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# CryptoApp
+> One stop app for NFTs, Cryptocurrency coins, and Crypto related News.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Table of Contents
 
-## Available Scripts
+- [Description](#description)
+- [Dependencies](#dependencies)
+- [Run](#Run)
+- [Resources](#Resources)
+    - [Application Controller](#Application)
+    - [User Controller](#Users)
+    - [Beds Controller](#Beds)
+    - [Plants Controller](#Plants)
+    - [Harvests Controller](#Harvests)
+- [Contributing](#Contributing)
+- [Code of Conduct](#Conduct)
+- [License](#license)
+- [Maintainers](#Maintainer(s))
 
-In the project directory, you can run:
+---
 
-### `yarn start`
+## Description
+This program was created to help people conveniently check crypto related news, coin historical data, NFTs and more. The app allows an AI Powered button to receive voice commands and responds accordingly. Additionally, you can use manual navigations if you prefer, instead of the voice powered button.
+The data eventually will be persisted in a Postgresql database or AWS cloud, once the app is finallized but as of now, it's 'persisted' in a redux store. 
+The app will be expanded in the future, both allowing for more specific filtering and querying of data as well as implementation of hardware, such as speed improvements, testings, more reliable source of data.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Dependencies
+The following requirements are necessary to run this application:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+###Front End:
 
-### `yarn test`
+- React
+- Redux Toolkit
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###Back End
+- Ruby
+- Rails
+- Postgresql
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Back End REPO for instructions
+[CryptoApp Back end](https://github.com/NadavsSchwartz/-crypto_backend)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Please have Node.js & React.js installed prior to running this application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After unzipping and saving the contents to the desired directory, run 'npm install' to install all the packages required for this program.
 
-### `yarn eject`
+From within that directory, run 'npm start' in your terminal, then open 'localhost:3000' (or the listening port stated in your terminal) in a web browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Your default web browser should open or a prompt to open a web browser should allow you to then see the app. If not, open the index.html file in a web browser.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The close the program, exit your web browser and type 'contrl/command + C' in your terminal to exit react server.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Resources
 
-## Learn More
+## Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/NadavsSchwartz/cryptoproject. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant Code of conduct.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Conduct
+Everyone using and interacting in Garden Helper's code
+bases, issue trackers, chat rooms and/or mailing lists is expected to follow the [Code of conduct](./CODE_OF_CONDUCT.md).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
+Copyright © 2020-21 Nadav Schwartz
 
-### Code Splitting
+The app is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
