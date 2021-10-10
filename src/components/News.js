@@ -84,50 +84,45 @@ const News = ({ simplified }) => {
 						</Content>
 					)}
 				</Row>
-				<Row gutter={[10, 10]}>
+				<Row gutter={[10, 10]} justify='center'>
 					{cryptoNews.value.map((news, i) => (
-						<Col
-							key={i}
-							xs={24}
-							sm={12}
-							md={12}
-							lg={8}
-							xl={6}
-							loading={loading}
-						>
+						<Col key={i} xs={24} sm={20} md={12} lg={8} xl={6} xxl={4}>
 							<Skeleton loading={loading} active>
-								<Card hoverable title={news.name} style={{ height: '100%' }}>
-									<a href={news.url} target='_blank' rel='noreferrer'>
-										<Meta
-											avatar={
-												<img
-													src={news?.image?.thumbnail?.contentUrl || demoImage}
-													alt=''
-												/>
-											}
-											description={
-												news.description.length > 100
-													? `${news.description.substring(0, 100)}...`
-													: news.description
-											}
-										/>
-										<div>
-											<div>
-												<Avatar
-													src={
-														news.provider[0]?.image?.thumbnail?.contentUrl ||
-														demoImage
-													}
-													alt=''
-												/>
-												<Text>{news.provider[0]?.name}</Text>
-											</div>
+								<a href={news.url} target='_blank' rel='noreferrer'>
+									<Card
+										hoverable
+										title={news.name}
+										style={{ height: '100%' }}
+										cover={
+											<img
+												src={news?.image?.thumbnail?.contentUrl || demoImage}
+												alt='thumbnail'
+												style={{ maxHeight: '300px' }}
+											/>
+										}
+										actions={[
 											<Text>
 												{moment(news.datePublished).startOf('ss').fromNow()}
-											</Text>
-										</div>
-									</a>
-								</Card>
+											</Text>,
+											<Avatar
+												src={
+													news.provider[0]?.image?.thumbnail?.contentUrl ||
+													demoImage
+												}
+												alt='Content icon'
+											></Avatar>,
+										]}
+									>
+										<Meta
+											description={
+												news.description.length > 110
+													? `${news.description.substring(0, 110)}...`
+													: news.description
+											}
+											style={{ height: '100%' }}
+										/>
+									</Card>
+								</a>
 							</Skeleton>
 						</Col>
 					))}
