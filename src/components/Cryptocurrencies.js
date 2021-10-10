@@ -100,6 +100,14 @@ const Cryptocurrencies = ({ simplified }) => {
 										)}
 										{currency.change}%
 									</div>
+									<div align='center'>
+										Price: $
+										{currency.price > 1
+											? millify(currency.price)
+											: millify(currency.price, {
+													precision: 8,
+											  })}
+									</div>
 								</Skeleton>
 							</Card>
 						</Link>
