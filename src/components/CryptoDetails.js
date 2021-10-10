@@ -33,6 +33,7 @@ const CryptoDetails = () => {
 		coinId,
 		timeperiod,
 	});
+
 	const cryptoDetails = data?.data?.coin;
 
 	if (isFetching) return <Loader />;
@@ -42,7 +43,13 @@ const CryptoDetails = () => {
 	const stats = [
 		{
 			title: 'Price to USD',
-			value: `$ ${cryptoDetails.price && millify(cryptoDetails.price)}`,
+			value: `$ ${
+				cryptoDetails.price > 1
+					? millify(cryptoDetails.price)
+					: millify(cryptoDetails.price, {
+							precision: 10,
+					  })
+			}`,
 			icon: <DollarCircleOutlined />,
 		},
 		{ title: 'Rank', value: cryptoDetails.rank, icon: <NumberOutlined /> },
@@ -60,7 +67,13 @@ const CryptoDetails = () => {
 		},
 		{
 			title: 'All-time-high(daily avg.)',
-			value: `$ ${millify(cryptoDetails.allTimeHigh.price)}`,
+			value: `$ ${
+				cryptoDetails.allTimeHigh.price > 1
+					? millify(cryptoDetails.allTimeHigh.price)
+					: millify(cryptoDetails.allTimeHigh.price, {
+							precision: 10,
+					  })
+			}`,
 			icon: <TrophyOutlined />,
 		},
 	];
@@ -121,7 +134,13 @@ const CryptoDetails = () => {
 			</Select>
 			<LineChart
 				coinHistory={coinHistory}
-				currentPrice={millify(cryptoDetails.price)}
+				currentPrice={
+					cryptoDetails.price > 1
+						? millify(cryptoDetails.price)
+						: millify(cryptoDetails.price, {
+								precision: 10,
+						  })
+				}
 				coinName={cryptoDetails.name}
 			/>
 			<Col className='stats-container'>
