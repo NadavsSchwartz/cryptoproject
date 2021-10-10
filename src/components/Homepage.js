@@ -142,7 +142,7 @@ const Homepage = () => {
 				</Content>
 				<Content style={{ marginTop: '50px' }}>
 					<Divider />
-					<Title level={3}>Top 10 Cryptos In The World</Title>
+					<Title level={3}>Top Cryptos In The World</Title>
 					<Cryptocurrencies simplified />{' '}
 					<Title level={3} style={{ marginTop: '50px' }}>
 						<Link to='/cryptocurrencies'>

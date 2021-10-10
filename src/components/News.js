@@ -27,7 +27,7 @@ const News = ({ simplified }) => {
 	const { data } = useGetCryptosQuery(100);
 	const { data: cryptoNews } = useGetCryptoNewsQuery({
 		newsCategory,
-		dayCount: simplified ? 8 : 12,
+		articleCount: simplified ? 8 : 12,
 	});
 	const { Meta } = Card;
 	const [loading, SetLoading] = useState(false);
