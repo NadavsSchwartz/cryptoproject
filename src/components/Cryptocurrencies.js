@@ -55,6 +55,7 @@ const Cryptocurrencies = ({ simplified }) => {
 					</div>
 					<div>
 						<Search
+							allowClear
 							placeholder='input search text'
 							enterButton='Search'
 							size='large'
