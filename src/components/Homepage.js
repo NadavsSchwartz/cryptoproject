@@ -82,62 +82,6 @@ const Homepage = () => {
 									</Card>
 								</Col>
 							))}
-						{/* <Col xs={12} sm={12} md={8} lg={6} xl={4.5} bordered>
-							<Card
-								bordered
-								title='Total Exchanges'
-								style={{ height: '100%', width: '100%' }}
-								extra={
-									<Popover content={'asd'} title='Title'>
-										<InfoCircleOutlined />
-									</Popover>
-								}
-							>
-								{millify(globalStats.totalExchanges)}
-							</Card>{' '}
-						</Col>
-						<Col xs={12} sm={12} md={8} lg={6} xl={4.5} bordered>
-							<Card
-								bordered
-								title='Market Cap'
-								style={{ height: '100%', width: '100%' }}
-								extra={
-									<Popover content={'asd'} title='Title'>
-										<InfoCircleOutlined />
-									</Popover>
-								}
-							>
-								{`$${millify(globalStats.totalMarketCap)}`}
-							</Card>{' '}
-						</Col>
-						<Col xs={12} sm={12} md={8} lg={6} xl={4.5} bordered>
-							<Card
-								bordered
-								title='Total Markets'
-								style={{ height: '100%', width: '100%' }}
-								extra={
-									<Popover content={'asd'} title='Title'>
-										<InfoCircleOutlined />
-									</Popover>
-								}
-							>
-								{millify(globalStats.totalMarkets)}
-							</Card>{' '}
-						</Col>
-						<Col xs={12} sm={12} md={8} lg={6} xl={2} bordered>
-							<Card
-								bordered
-								title='24h Volume'
-								style={{ height: '100%', width: '100%' }}
-								extra={
-									<Popover content={'asd'} title='Title'>
-										<InfoCircleOutlined />
-									</Popover>
-								}
-							>
-								{`$${millify(globalStats.total24hVolume)}`}
-							</Card>
-						</Col> */}
 					</Row>
 				</Content>
 				<Content style={{ marginTop: '50px' }}>

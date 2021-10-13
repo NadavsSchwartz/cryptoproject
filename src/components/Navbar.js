@@ -55,7 +55,13 @@ const Navbar = ({ collapsed, setCollapsed, screenSize }) => {
 							<span style={{ marginLeft: '10px' }}>Latest NFTs</span>
 							{latestNft?.map((nft) => (
 								<Col>
-									<Divider type='vertical' style={{ marginLeft: '5px' }} />
+									<Divider
+										type='vertical'
+										style={{
+											marginLeft: '8px',
+											backgroundSize: '10px',
+										}}
+									/>
 									<span style={{ padding: '3px', fontSize: '12px' }}>
 										<Typography.Link href={nft.coinrankingUrl} target='_blank'>
 											{nft.dappName}

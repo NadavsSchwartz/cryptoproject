@@ -1,45 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
-import { Layout, Typography, Space } from 'antd';
-
-import {
-	Exchanges,
-	Homepage,
-	News,
-	Cryptocurrencies,
-	CryptoDetails,
-	Navbar,
-	Sidebar,
-} from './components';
+import { Layout } from 'antd';
+import { Navbar, Sidebar } from './components';
 import './App.css';
 import { Content } from 'antd/lib/layout/layout';
-import NoMatch from './components/NoMatch';
 import Footer from './components/Footer';
 import alanBtn from '@alan-ai/alan-sdk-web';
-const routes = [
-	{ path: '/', name: 'Homepage', Component: Homepage },
-	{ path: '/exchanges', name: 'Exchanges', Component: Exchanges },
-	{
-		path: '/cryptocurrencies',
-		name: 'Cryptocurrencies',
-		Component: Cryptocurrencies,
-	},
-	{
-		path: '/crypto/:coinId',
-		name: 'CryptoDetails',
-		Component: CryptoDetails,
-	},
-	{
-		path: '/news',
-		name: 'News',
-		Component: News,
-	},
-	{
-		path: '*',
-		name: 'No Match',
-		Component: NoMatch,
-	},
-];
+import Router from './routes/index';
+
 const App = () => {
 	const [collapsed, setCollapsed] = useState(false);
 	const [screenSize, setScreenSize] = useState(undefined);
@@ -84,13 +51,7 @@ const App = () => {
 					}}
 				>
 					<Layout>
-						 <Switch>
-							{routes.map(({ path, Component }) => (
-								<Route key={path} exact path={path}>
-									<Component />
-								</Route>
-							))}
-						</Switch>
+						<Router />
 					</Layout>
 				</Content>
 				<Footer />
