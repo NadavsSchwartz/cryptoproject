@@ -9,6 +9,7 @@ import {
 } from '@ant-design/icons';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import Loader from './Loader';
+import { Content } from 'antd/lib/layout/layout';
 
 const { Search } = Input;
 
@@ -17,6 +18,7 @@ const Cryptocurrencies = ({ simplified }) => {
 	const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
 	const [cryptos, setCryptos] = useState();
 	const [searchTerm, setSearchTerm] = useState('');
+	const [loading, SetLoading] = useState(false);
 
 	useEffect(() => {
 		setCryptos(cryptosList?.data?.coins);
@@ -24,8 +26,11 @@ const Cryptocurrencies = ({ simplified }) => {
 		const filteredData = cryptosList?.data?.coins.filter((item) =>
 			item.name.toLowerCase().includes(searchTerm)
 		);
-
-		setCryptos(filteredData);
+		SetLoading(true);
+		setTimeout(function () {
+			setCryptos(filteredData);
+			SetLoading(false);
+		}, 1000);
 	}, [cryptosList, searchTerm]);
 	const { Title } = Typography;
 	if (isFetching) return <Loader />;
@@ -53,14 +58,6 @@ const Cryptocurrencies = ({ simplified }) => {
 							placeholder='input search text'
 							enterButton='Search'
 							size='large'
-							suffix={
-								<AudioOutlined
-									style={{
-										fontSize: 16,
-										color: '#1890ff',
-									}}
-								/>
-							}
 							onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
 							onSearch={(e) => setSearchTerm(e.toLowerCase())}
 						/>
@@ -69,50 +66,54 @@ const Cryptocurrencies = ({ simplified }) => {
 			)}
 
 			<Row gutter={[10, 10]} style={{ marginTop: '20px' }}>
-				{cryptos?.map((currency) => (
-					<Col xs={12} sm={8} md={6} lg={6} xl={3} bordered>
-						<Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
-							<Card
-								bordered
-								size='small'
-								title={`${currency.name}`}
-								extra={
-									<img
-										src={currency.iconUrl}
-										style={{ height: '30px', width: '30px' }}
-										alt='crypto'
-									/>
-								}
-								style={{ height: '100%' }}
-							>
-								<Skeleton loading={isFetching} active>
-									{' '}
-									<div align='center'>
-										Market Cap: {millify(currency.marketCap)}
-									</div>
-									<div align='center'>
-										Daily Change:
-										<br />{' '}
-										{currency.change > 0 ? (
-											<ArrowUpOutlined style={{ color: '#3f8600' }} />
-										) : (
-											<ArrowDownOutlined style={{ color: '#cf1322' }} />
-										)}
-										{currency.change}%
-									</div>
-									<div align='center'>
-										Price: $
-										{currency.price > 1
-											? millify(currency.price)
-											: millify(currency.price, {
-													precision: 8,
-											  })}
-									</div>
+				{cryptos && cryptos.length > 0 ? (
+					cryptos.map((currency) => (
+						<Col xs={12} sm={8} md={6} lg={6} xl={3} bordered>
+							<Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
+								<Skeleton loading={loading} active>
+									<Card
+										bordered
+										size='small'
+										title={`${currency.name}`}
+										extra={
+											<img
+												src={currency.iconUrl}
+												style={{ height: '30px', width: '30px' }}
+												alt='crypto'
+											/>
+										}
+										style={{ height: '100%' }}
+									>
+										{' '}
+										<div align='center'>
+											Market Cap: {millify(currency.marketCap)}
+										</div>
+										<div align='center'>
+											Daily Change:
+											<br />{' '}
+											{currency.change > 0 ? (
+												<ArrowUpOutlined style={{ color: '#3f8600' }} />
+											) : (
+												<ArrowDownOutlined style={{ color: '#cf1322' }} />
+											)}
+											{currency.change}%
+										</div>
+										<div align='center'>
+											Price: $
+											{currency.price > 1
+												? millify(currency.price)
+												: millify(currency.price, {
+														precision: 8,
+												  })}
+										</div>
+									</Card>
 								</Skeleton>
-							</Card>
-						</Link>
-					</Col>
-				))}
+							</Link>
+						</Col>
+					))
+				) : (
+					<Content>No results.</Content>
+				)}
 			</Row>
 		</>
 	);
