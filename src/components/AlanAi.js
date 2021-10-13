@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import alanBtn from '@alan-ai/alan-sdk-web';
 import { Content } from 'antd/lib/layout/layout';
 const AlanAi = () => {
@@ -12,7 +12,7 @@ const AlanAi = () => {
 			},
 		});
 	}, []);
-	return <Content>{alanBtn}</Content>;
+	return <div></div>;
 };
 
 export default AlanAi;
