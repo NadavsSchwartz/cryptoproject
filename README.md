@@ -65,6 +65,10 @@ Please have ruby and rails installed prior to running the back end, as well as t
 |  '/news' | GET | renders crypto currency related news | [code](./src/components/News.js) |
 
 
+## Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/NadavsSchwartz/cryptoApp.
+
+
 ## License
 
 The app is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
