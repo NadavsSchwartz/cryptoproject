@@ -12,9 +12,7 @@
     - [AllCoins Component](#AllCoins)
     - [News Component](#News)
 - [Contributing](#Contributing)
-- [Code of Conduct](#Conduct)
 - [License](#license)
-- [Maintainers](#Maintainer(s))
 
 ---
 
@@ -42,17 +40,6 @@ To use CryptoApp, visit the file's repo on Github.
 
 Please have ruby and rails installed prior to running the back end, as well as the [other dependencies from the Back End repo](https://github.com/NadavsSchwartz/-crypto_backend#dependencies).
 
-Please have Node.js & React.js installed prior to running the Front end application.
-
-After unzipping and saving the contents to the desired directory, run 'npm install' to install all the packages required for this program.
-
-From within that directory, run 'npm start' in your terminal, then open 'localhost:3000' (or the listening port stated in your terminal) in a web browser.
-
-Your default web browser should open or a prompt to open a web browser should allow you to then see the app. If not, open the index.html file in a web browser.
-
-The close the program, exit your web browser and type 'contrl/command + C' in your terminal to exit react server.
-
-
 ## Resources
 
 ### HomePage
@@ -79,14 +66,10 @@ The close the program, exit your web browser and type 'contrl/command + C' in yo
 
 
 ## Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/NadavsSchwartz/cryptoproject. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant Code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/NadavsSchwartz/cryptoApp.
 
-## Conduct
-Everyone using and interacting in Garden Helper's code
-bases, issue trackers, chat rooms and/or mailing lists is expected to follow the [Code of conduct](./CODE_OF_CONDUCT.md).
 
 ## License
-Copyright © 2020-21 Nadav Schwartz
 
 The app is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 ---
