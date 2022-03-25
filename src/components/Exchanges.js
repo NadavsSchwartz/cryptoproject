@@ -1,12 +1,10 @@
 import React from 'react';
 import millify from 'millify';
-import { Typography, Avatar, Layout, Table, Skeleton } from 'antd';
+import { Typography, Layout, Table, Skeleton } from 'antd';
 
 import { useGetExchangesQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 import { Content } from 'antd/lib/layout/layout';
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
 const Exchanges = () => {
