@@ -63,7 +63,7 @@ const Navbar = ({ collapsed, setCollapsed, screenSize }) => {
                   />
                   <span style={{ padding: '3px', fontSize: '12px' }}>
                     <Typography.Link href={nft.externalUrl} target="_blank">
-                      {nft.name}
+                      {nft.name ? nft.name : nft.dappName}
                     </Typography.Link>{' '}
                     Sold For: ${millify(nft.priceInDollar)} At:
                     {new Date(nft.auctionCreatedAt * 1000).toLocaleTimeString()}
