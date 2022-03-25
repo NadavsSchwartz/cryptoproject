@@ -10,130 +10,135 @@ import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
 const Exchanges = () => {
-	const { data, isFetching } = useGetExchangesQuery();
-	const exchangesList = data?.data?.exchanges;
+  const { data, isFetching } = useGetExchangesQuery();
 
-	if (isFetching) return <Loader />;
+  const exchangesList = data?.data;
 
-	const columns = [
-		{
-			title: 'Coin Name',
-			dataIndex: 'exchanges',
-			key: 'exchanges',
-			sorter: (a) => a.exchanges[0].localeCompare(a.exchanges[2]),
-			render: (data) => (
-				<div>
-					<span style={{ marginRight: '5px' }}>{data[2]}.</span>
-					<Skeleton active loading={isFetching}>
-						<Avatar
-							src={data[0]}
-							style={{ verticalAlign: 'middle', marginRight: '5px' }}
-						/>
-					</Skeleton>
-					<span>{data[1]}</span>
-				</div>
-			),
-		},
+  if (isFetching) return <Loader />;
 
-		{
-			title: '24h Trade Volume',
-			dataIndex: '24TradeVolume',
-			key: '24TradeVolume',
-			defaultSortOrder: 'descend',
-			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
-			sorter: (a, b) =>
-				millify(a['24TradeVolume']).localeCompare(millify(b['24TradeVolume'])),
-		},
-		{
-			title: 'Market Share',
-			dataIndex: 'marketShare',
-			key: 'marketShare',
-			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
+  const columns = [
+    {
+      title: 'Coin Name',
+      dataIndex: 'exchanges',
+      key: 'exchanges',
+      sorter: (a, b) => a.exchanges.length - b.exchanges.length,
+      render: (data) => (
+        <div>
+          <Skeleton active loading={isFetching}></Skeleton>
+          <span>{data}</span>
+        </div>
+      ),
+    },
 
-			sorter: (a, b) => a.marketShare.localeCompare(b.marketShare),
-		},
+    {
+      title: '24h Trade Volume',
+      dataIndex: 'volumeUsd',
+      key: 'volumeUsd',
+      defaultSortOrder: 'descend',
 
-		{
-			title: 'No. Of Markets',
-			key: 'numberOfMarkets',
-			render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
-			dataIndex: 'numberOfMarkets',
-			sorter: (a, b) => millify(a.numberOfMarkets) - millify(b.numberOfMarkets),
-		},
-		{
-			title: 'Verified',
-			dataIndex: 'verified',
-			key: 'verified',
-			responsive: ['md'],
-			render: (data) => (
-				<div style={{ textAlign: 'center' }}>
-					{data ? (
-						<CheckOutlined style={{ color: '#3f8600' }} />
-					) : (
-						<CloseOutlined style={{ color: '#cf1322' }} />
-					)}
-				</div>
-			),
-		},
+      sorter: (a, b) =>
+        a.volumeUsd && b.volumeUsd ? a.volumeUsd - b.volumeUsd : '',
+      render: (data) => (
+        <div style={{ textAlign: 'center' }}>
+          {' '}
+          {data ? '$' + millify(data) : 'No Trade Volume Data received'}
+        </div>
+      ),
+    },
+    {
+      title: 'Market Share',
+      dataIndex: 'percentTotalVolume',
+      key: 'percentTotalVolume',
+      render: (data) => (
+        <div style={{ textAlign: 'center' }}>
+          {' '}
+          {data ? '$' + millify(data) : 'No Market Share Data received'}
+        </div>
+      ),
 
-		{
-			title: 'Recommended',
-			dataIndex: 'recommended',
-			key: 'recommended',
-			responsive: ['md'],
-			render: (data) => (
-				<div style={{ textAlign: 'center' }}>
-					{data ? (
-						<CheckOutlined style={{ color: '#3f8600' }} />
-					) : (
-						<CloseOutlined style={{ color: '#cf1322' }} />
-					)}
-				</div>
-			),
-		},
-	];
+      sorter: (a, b) =>
+        a.percentTotalVolume && b.percentTotalVolume
+          ? a.percentTotalVolume - b.percentTotalVolume
+          : '',
+    },
 
-	return (
-		<Layout>
-			<Content>
-				<div style={{ marginTop: '20px' }}>
-					<Title level={3}>Top Cryptocurrency Exchanges</Title>
-					<p>
-						Crypto ranks and scores exchanges based on trading volumes in the
-						last 24 hours, all data is provided by{' '}
-						<a
-							href='https://coinranking.com/exchanges'
-							target='_blank'
-							rel='noreferrer'
-						>
-							Coin Ranking
-						</a>
-						.
-					</p>
-				</div>
-				<Table
-					showSorterTooltip
-					bordered
-					loading={isFetching}
-					dataSource={
-						!isFetching
-							? exchangesList.map((exchange) => ({
-									key: exchange.uuid,
-									exchanges: [exchange.iconUrl, exchange.name, exchange.rank],
-									['24TradeVolume']: millify(exchange['24hVolume']),
-									markets: '$' + `${millify(exchange.numberOfMarkets)}`,
-									marketShare: millify(exchange.marketShare) + '%',
-									numberOfMarkets: exchange.numberOfMarkets,
-									verified: exchange.verified,
-									recommended: exchange.recommended,
-							  }))
-							: ''
-					}
-					columns={columns}
-				/>
-			</Content>
-		</Layout>
-	);
+    {
+      title: 'No. Of Markets',
+      key: 'tradingPairs',
+      responsive: ['sm'],
+      render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
+      dataIndex: 'tradingPairs',
+      sorter: (a, b) =>
+        a.tradingPairs && b.tradingPairs ? a.tradingPairs - b.tradingPairs : '',
+    },
+    {
+      title: "Coin's Website",
+      dataIndex: 'exchangeUrl',
+      key: 'exchangeUrl',
+      responsive: ['md'],
+      render: (data) => (
+        <div style={{ textAlign: 'center' }}>
+          {data ? (
+            <a href={data[0]} alt="Exchange Url">
+              {data[1]}
+            </a>
+          ) : (
+            'No Website data received'
+          )}
+        </div>
+      ),
+    },
+
+    {
+      title: 'Rank',
+      dataIndex: 'rank',
+      key: 'rank',
+      responsive: ['md'],
+      render: (data) => <div style={{ textAlign: 'center' }}>{data}</div>,
+      sorter: (a, b) => (a.rank && b.rank ? a.rank - b.rank : ''),
+    },
+  ];
+
+  return (
+    <Layout>
+      <Content>
+        <div style={{ marginTop: '20px' }}>
+          <Title level={3}>Top Cryptocurrency Exchanges</Title>
+          <p>
+            Crypto ranks and scores exchanges based on trading volumes in the
+            last 24 hours, all data is provided by{' '}
+            <a
+              href="https://coincap.io/exchanges"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Coincap
+            </a>
+            .
+          </p>
+        </div>
+        <Table
+          showSorterTooltip
+          bordered
+          loading={isFetching}
+          dataSource={
+            !isFetching
+              ? exchangesList.map((exchange) => ({
+                  exchanges: exchange.name,
+                  key: exchange.rank,
+                  volumeUsd: exchange.volumeUsd,
+                  percentTotalVolume: exchange.percentTotalVolume,
+                  tradingPairs: exchange.tradingPairs,
+                  exchangeUrl: [exchange.exchangeUrl, exchange.name],
+                  rank: exchange.rank,
+                }))
+              : ''
+          }
+          columns={columns}
+        />
+      </Content>
+    </Layout>
+  );
 };
 
 export default Exchanges;
