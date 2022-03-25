@@ -19,9 +19,7 @@
 ---
 
 ## Description
-This program was created to help people conveniently check crypto related news, coin historical data, NFTs and more. The app allows an AI Powered button to receive voice commands and responds accordingly. Additionally, you can use manual navigations if you prefer, instead of the voice powered button.
-The data eventually will be persisted in a Postgresql database or AWS cloud, once the app is finallized but as of now, it's 'persisted' in a redux store. 
-The app will be expanded in the future, both allowing for more specific filtering and querying of data as well as implementation of hardware, such as speed improvements, testings, more reliable source of data.
+CrypoApp was created to help people conveniently check crypto-related news, coin historical data, NFTs, Exchange Data, etc. CrypoApp allows an AI-Powered button to receive voice commands and responds accordingly. Additionally, you can use manual navigations instead of the voice-powered button.
 
 ## Dependencies
 The following requirements are necessary to run this application:
