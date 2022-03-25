@@ -15,7 +15,8 @@ const App = () => {
     alanBtn({
       key: '9a97f2d734b2401703b2e81114d7d4262e956eca572e1d8b807a3e2338fdd0dc/stage',
       rootEl: alanBtnContainer.current,
-      onCommand: ({ command }) => {
+      onCommand: (command) => {
+        console.log(command);
         if (command === 'testCommand') {
           alert('this is a test command');
         }

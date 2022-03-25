@@ -15,24 +15,29 @@ const Sidebar = ({ collapsed }) => {
         trigger={null}
         collapsible
         collapsed={collapsed}
-        width={190}
+        width={200}
         style={{ userSelect: 'none', backgroundColor: '#304156' }}
       >
         <div
           style={{
-            overflow: 'hidden',
-            height: '64px',
-            lineHeight: '64px',
-            backgroundColor: '#304156',
-            color: '#fff',
-            fontSize: '20px',
-            fontWeight: 600,
+            height: '80px',
+            lineHeight: '85px',
+            backgroundColor: 'white',
+            fontSize: '24px',
+            fontWeight: 700,
             textAlign: 'center',
           }}
         >
-          <Link style={{ color: 'white' }} to="/">
-            CryptoApp
-          </Link>
+          <div>
+            <Link to="/">
+              <img
+                src="/logo_transparent.png"
+                alt="logo"
+                width={90}
+                height={90}
+              />
+            </Link>
+          </div>
         </div>
         <Menu
           theme="dark"
