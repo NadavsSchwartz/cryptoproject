@@ -23,7 +23,7 @@ const Navbar = ({ collapsed, setCollapsed, screenSize }) => {
 
   if (isFetching) return <Loader />;
   return (
-    <Content style={{ maxHeight: '80px' }}>
+    <Content style={{ maxHeight: '80px', overflow: 'hidden' }}>
       <Header
         style={{
           zIndex: '1',
