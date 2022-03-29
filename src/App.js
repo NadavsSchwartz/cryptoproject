@@ -1,27 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout } from 'antd';
 import { Navbar, Sidebar } from './components';
 import './App.css';
 import { Content } from 'antd/lib/layout/layout';
 import Footer from './components/Footer';
-import alanBtn from '@alan-ai/alan-sdk-web';
 import Router from './routes/index';
 
 const App = () => {
-  const alanBtnContainer = useRef();
   const [collapsed, setCollapsed] = useState(false);
   const [screenSize, setScreenSize] = useState(undefined);
   useEffect(() => {
-    alanBtn({
-      key: '9a97f2d734b2401703b2e81114d7d4262e956eca572e1d8b807a3e2338fdd0dc/stage',
-      rootEl: alanBtnContainer.current,
-      onCommand: (command) => {
-        console.log(command);
-        if (command === 'testCommand') {
-          alert('this is a test command');
-        }
-      },
-    });
     const handleResize = () => setScreenSize(window.innerWidth);
 
     window.addEventListener('resize', handleResize);
@@ -40,7 +28,13 @@ const App = () => {
     setCollapsed(!collapsed);
   };
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout
+      style={{
+        minHeight: '100vh',
+        width: '100%',
+        minWidth: collapsed ? '250px' : '470px',
+      }}
+    >
       <Sidebar {...{ collapsed }} />
       <Layout>
         <Navbar
@@ -48,7 +42,7 @@ const App = () => {
         />
         <Content
           style={{
-            padding: 24,
+            padding: 12,
             marginTop: '20px',
             minHeight: 280,
           }}
@@ -57,7 +51,7 @@ const App = () => {
             <Router />
           </Layout>
         </Content>
-        <div ref={alanBtnContainer}></div>
+
         <Footer />
       </Layout>
     </Layout>
