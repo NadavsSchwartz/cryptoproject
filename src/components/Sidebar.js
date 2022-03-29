@@ -14,6 +14,8 @@ const Sidebar = ({ collapsed }) => {
       <Sider
         trigger={null}
         collapsible
+        breakpoint="sm"
+        collapsedWidth="0"
         collapsed={collapsed}
         width={200}
         style={{ userSelect: 'none', backgroundColor: '#304156' }}
@@ -29,14 +31,14 @@ const Sidebar = ({ collapsed }) => {
           }}
         >
           <div>
-            <Link to="/">
+            <a href="/">
               <img
                 src="/logo_transparent.png"
                 alt="logo"
                 width={90}
                 height={90}
               />
-            </Link>
+            </a>
           </div>
         </div>
         <Menu

@@ -5,21 +5,22 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 
 import Loader from './Loader';
 import millify from 'millify';
-import { useGetLatestNftsQuery } from '../services/nftApi';
+import { useGetCryptostatsQuery } from '../services/cryptoApi';
+const { Text } = Typography;
 const { Header, Content } = Layout;
 const Navbar = ({ collapsed, setCollapsed, screenSize }) => {
-  const { data, isFetching } = useGetLatestNftsQuery();
-  const [latestNft, setLatestNft] = useState([]);
-  const [showNfts, setShowNfts] = useState(true);
+  const { data, isFetching } = useGetCryptostatsQuery();
+  const [cryptoStats, setCryptoStats] = useState([]);
+  const [showStats, setShowStats] = useState([]);
 
   useEffect(() => {
-    setLatestNft(data?.data?.nfts);
-    if (screenSize <= 600) {
-      setShowNfts(false);
+    if (screenSize <= 400) {
+      setShowStats(false);
     } else {
-      setShowNfts(true);
+      setShowStats(true);
     }
-  }, [data, screenSize]);
+    setCryptoStats(data?.data);
+  }, [cryptoStats, data, screenSize]);
 
   if (isFetching) return <Loader />;
   return (
@@ -49,27 +50,76 @@ const Navbar = ({ collapsed, setCollapsed, screenSize }) => {
           )}
         </div>
         <Row style={{ overflow: 'hidden', textAlign: 'center' }}>
-          {showNfts && (
+          {showStats && (
             <>
-              <span style={{ marginLeft: '10px' }}>Latest NFTs</span>
-              {latestNft?.map((nft) => (
+              <span style={{ marginLeft: '10px' }}> </span>
+              {showStats && (
                 <Col>
-                  <Divider
-                    type="vertical"
-                    style={{
-                      marginLeft: '8px',
-                      backgroundSize: '10px',
-                    }}
-                  />
                   <span style={{ padding: '3px', fontSize: '12px' }}>
-                    <Typography.Link href={nft.externalUrl} target="_blank">
-                      {nft.name ? nft.name : nft.dapp}
-                    </Typography.Link>{' '}
-                    Sold For: ${millify(nft.priceInDollar)} At:
-                    {new Date(nft.auctionCreatedAt * 1000).toLocaleTimeString()}
+                    <Text>
+                      Total 24hr Volume:{' '}
+                      {cryptoStats && cryptoStats.total24hVolume
+                        ? '$' + millify(cryptoStats.total24hVolume)
+                        : 'no data'}
+                    </Text>
+                    <Divider
+                      type="vertical"
+                      style={{
+                        marginLeft: '8px',
+                        backgroundSize: '10px',
+                      }}
+                    />
+                    <Text>
+                      Total Current Marketcap:{' '}
+                      {cryptoStats && cryptoStats.totalMarketCap
+                        ? '$' + millify(cryptoStats.totalMarketCap)
+                        : 'no data'}
+                    </Text>{' '}
+                    <Divider
+                      type="vertical"
+                      style={{
+                        marginLeft: '8px',
+                        backgroundSize: '10px',
+                      }}
+                    />
+                    <Text>
+                      {' '}
+                      Total Current Markets:{' '}
+                      {cryptoStats && cryptoStats.totalMarkets
+                        ? cryptoStats.totalMarkets
+                        : 'no data'}
+                    </Text>{' '}
+                    <Divider
+                      type="vertical"
+                      style={{
+                        marginLeft: '8px',
+                        backgroundSize: '10px',
+                      }}
+                    />
+                    <Text>
+                      {' '}
+                      Total Current Exchanges:{' '}
+                      {cryptoStats && cryptoStats.totalExchanges
+                        ? cryptoStats.totalExchanges
+                        : 'no data'}
+                    </Text>{' '}
+                    <Divider
+                      type="vertical"
+                      style={{
+                        marginLeft: '8px',
+                        backgroundSize: '10px',
+                      }}
+                    />
+                    <Text>
+                      {' '}
+                      Total Current Coins Number:{' '}
+                      {cryptoStats && cryptoStats.totalCoins
+                        ? cryptoStats.totalCoins
+                        : 'no data'}
+                    </Text>
                   </span>
                 </Col>
-              ))}
+              )}
             </>
           )}
         </Row>
