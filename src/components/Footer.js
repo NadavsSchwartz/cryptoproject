@@ -34,7 +34,7 @@ const Footer = () => {
         style={{ color: 'white', textAlign: 'center' }}
       >
         Copyright &copy; 2020-{currentYear}
-        <Link to="/">CryptoApp.</Link> <br />
+        <a href="/">CryptoApp.</a> <br />
       </Typography.Title>
     </footer>
   );
