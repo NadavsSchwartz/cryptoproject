@@ -47,6 +47,7 @@ const Exchanges = () => {
       title: 'Market Share',
       dataIndex: 'percentTotalVolume',
       key: 'percentTotalVolume',
+      responsive: ['sm'],
       render: (data) => (
         <div style={{ textAlign: 'center' }}>
           {' '}
@@ -98,7 +99,7 @@ const Exchanges = () => {
   ];
 
   return (
-    <Layout>
+    <Layout style={{ overflow: 'hidden' }}>
       <Content>
         <div style={{ marginTop: '20px' }}>
           <Title level={3}>Top Cryptocurrency Exchanges</Title>
@@ -119,6 +120,7 @@ const Exchanges = () => {
           showSorterTooltip
           bordered
           loading={isFetching}
+          scroll={{ x: 'max-content' }}
           dataSource={
             !isFetching
               ? exchangesList.map((exchange) => ({
