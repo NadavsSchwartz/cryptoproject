@@ -132,8 +132,8 @@ const CryptoDetails = () => {
           {data?.data?.coin?.name} ({data?.data?.coin?.symbol}) Price
         </Title>
         <p>
-          {cryptoDetails?.name} live price in US Dollar (USD). View value
-          statistics, market cap and supply.
+          {cryptoDetails?.name} live prices in US Dollar (USD), statistics,
+          market cap and supply.
         </p>
       </Col>
       <Select

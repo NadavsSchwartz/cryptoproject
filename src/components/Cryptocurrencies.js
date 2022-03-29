@@ -35,17 +35,10 @@ const Cryptocurrencies = ({ simplified }) => {
       {!simplified && (
         <>
           <div style={{ marginTop: '20px' }}>
-            <Title level={3}>All Cryptocurrency </Title>
+            <Title level={3}>All Cryptocurrencies </Title>
             <p>
-              This section provides Cryptocurrency data imported from{' '}
-              <a
-                href="https://coinranking.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Coin Ranking
-              </a>
-              .
+              This section provides data on Crypto coins, search or click on a
+              coin for in-depth details.
             </p>
           </div>
           <div>

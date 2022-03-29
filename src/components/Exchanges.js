@@ -51,7 +51,7 @@ const Exchanges = () => {
       render: (data) => (
         <div style={{ textAlign: 'center' }}>
           {' '}
-          {data ? '$' + millify(data) : 'No Market Share Data received'}
+          {data ? '%' + millify(data) : 'No Market Share Data received'}
         </div>
       ),
 
@@ -104,16 +104,8 @@ const Exchanges = () => {
         <div style={{ marginTop: '20px' }}>
           <Title level={3}>Top Cryptocurrency Exchanges</Title>
           <p>
-            Crypto ranks and scores exchanges based on trading volumes in the
-            last 24 hours, all data is provided by{' '}
-            <a
-              href="https://coincap.io/exchanges"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Coincap
-            </a>
-            .
+            Ranks, market share and trade volume is based on tradings in the
+            last 24 hours.
           </p>
         </div>
         <Table
