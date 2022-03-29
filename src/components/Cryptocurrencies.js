@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import millify from 'millify';
 import { Link } from 'react-router-dom';
-import { Card, Typography, Row, Col, Input, Skeleton } from 'antd';
-import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
+import { Typography, Row, Col, Input } from 'antd';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 import { Content } from 'antd/lib/layout/layout';
+import StatsCard from './StatsCard';
 
 const { Search } = Input;
 
@@ -62,49 +61,16 @@ const Cryptocurrencies = ({ simplified }) => {
         </>
       )}
 
-      <Row gutter={[10, 10]} style={{ marginTop: '20px' }}>
+      <Row gutter={[5, 5]} style={{ marginTop: '20px' }}>
         {cryptos && cryptos.length > 0 ? (
           cryptos.map((currency) => (
-            <Col xs={12} sm={8} md={6} lg={6} xl={3} bordered>
+            <Col xs={12} md={6} lg={6} xl={3} key={currency.uuid}>
               <Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
-                <Skeleton loading={loading} active>
-                  <Card
-                    bordered
-                    size="small"
-                    title={`${currency.name}`}
-                    extra={
-                      <img
-                        src={currency.iconUrl}
-                        style={{ height: '30px', width: '30px' }}
-                        alt="crypto"
-                      />
-                    }
-                    style={{ height: '100%' }}
-                  >
-                    {' '}
-                    <div align="center">
-                      Market Cap: {millify(currency.marketCap)}
-                    </div>
-                    <div align="center">
-                      Daily Change:
-                      <br />{' '}
-                      {currency.change > 0 ? (
-                        <ArrowUpOutlined style={{ color: '#3f8600' }} />
-                      ) : (
-                        <ArrowDownOutlined style={{ color: '#cf1322' }} />
-                      )}
-                      {currency.change}%
-                    </div>
-                    <div align="center">
-                      Price: $
-                      {currency.price > 1
-                        ? millify(currency.price)
-                        : millify(currency.price, {
-                            precision: 8,
-                          })}
-                    </div>
-                  </Card>
-                </Skeleton>
+                <StatsCard
+                  loading={loading}
+                  coin={currency}
+                  type="cryptoPage"
+                />
               </Link>
             </Col>
           ))
