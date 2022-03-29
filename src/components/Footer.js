@@ -24,7 +24,7 @@ const Footer = () => {
             fontSize: '15px',
           }}
         >
-          <Link to="/">Home</Link>
+          <a href="/">Home</a>
           <Link to="/exchanges">Exchanges</Link>
           <Link to="/news">News</Link>
         </Space>
