@@ -23,7 +23,7 @@ const Homepage = () => {
     <Layout>
       <Content align="center">
         <div style={{ marginTop: '20px' }}>
-          <Title level={3}>Newest coins on the market </Title>
+          <Title level={3}>Upcoming coins worth checking</Title>
         </div>
         <Row gutter={[5, 5]} align="center">
           {cryptoStats &&
@@ -35,7 +35,7 @@ const Homepage = () => {
         </Row>
 
         <div style={{ marginTop: '20px' }}>
-          <Title level={3}>Upcoming coins worth checking </Title>
+          <Title level={3}> Newest coins on the market </Title>
         </div>
         <Row gutter={[5, 5]} align="center">
           {cryptoStats &&

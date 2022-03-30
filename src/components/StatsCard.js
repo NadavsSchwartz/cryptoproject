@@ -14,7 +14,7 @@ const StatsCard = ({ coin, type, loading }) => {
         extra={
           <img
             src={coin.iconUrl}
-            style={{ maxHeight: '30px', maxWidth: '30px' }}
+            style={{ height: '30px', width: '30px' }}
             alt="coin's icon"
           />
         }
