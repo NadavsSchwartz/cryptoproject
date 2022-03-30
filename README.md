@@ -4,11 +4,13 @@
 # CryptoApp
 > One stop app for anything Cryptocurrency.
 
+https://cryptoapp.win
+
 ### Table of Contents
 
 - [Description](#description)
 - [Key Features](#key-features)
-- [Dependencies](#dependencies)
+- [Stack](#Stack)
 - [Setup](#Setup)
 - [Resources](#Resources)
     - [Home Page Component](#HomePage)
@@ -32,23 +34,28 @@ CrypoApp was created to help people conveniently check crypto-related news, coin
 - Dedicated exchanges table for quick stats on dozens of coins.
 - Query caching with Rails cache
 
-## Dependencies
-The following requirements are necessary to run this application:
-
 ## Stack:
 
 - React (UI library)
 - Redux Toolkit (State management)
 - Antd (CSS styling solution library)
 - React Charts (Chart library) 
-- Rails  (Web app framework)
+- Rails (Web app framework)
 
 ### Back End REPO
 [CryptoApp Back end](https://github.com/NadavsSchwartz/-crypto_backend)
 
 ## Setup
-To use CryptoApp locally, You need to have [Node.js](https://nodejs.org/) installed along with all the dependencies,
-and an .env file in the root of the BACK END project, to fill it, you'll need to get the following api keys:
+To use CryptoApp locally, You need to have [Node.js](https://nodejs.org/) installed along with all the dependencies.
+
+1. Clone this and [CryptoApp Back end](https://github.com/NadavsSchwartz/-crypto_backend) repository
+2. Create an `.env` file in the back-end folder and fill it properly ([see below](#configuration)).
+3. Install dependencies: `npm install` or `yarn` if you're using yarn.
+4. Run for development: `npm run dev` or `yarn dev` if you're using yarn.
+
+### Configuration
+
+For the configuration, the following settings have to be added in your `.env`-file:
 
 - [Microsoft news as (NEWS_API_KEY)](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/bing-news-search1)
 - [Coinranking as (COINRANKING_API_KEY)](https://developers.coinranking.com/account/)
@@ -89,8 +96,9 @@ Please have ruby and rails installed prior to running the back end, as well as t
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/NadavsSchwartz/cryptoApp.
+Pull requests are welcome. You'll probably find lots of improvements to be made.
 
+Open issues for feedback, requesting features, reporting bugs, or discuss ideas.
 
 ## License
 
