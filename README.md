@@ -1,4 +1,5 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5639531f-4e8a-4661-abd0-4b3e40736ffd/deploy-status)](https://app.netlify.com/sites/react-app-crypto-currency/deploys)
+![Heroku](https://pyheroku-badge.herokuapp.com/?app=crypto-currency-backend&style=flat)
 
 # CryptoApp
 > One stop app for anything Cryptocurrency.
