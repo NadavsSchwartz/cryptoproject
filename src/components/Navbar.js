@@ -14,7 +14,7 @@ const Navbar = ({ collapsed, setCollapsed, screenSize }) => {
   const [showStats, setShowStats] = useState([]);
 
   useEffect(() => {
-    if (screenSize <= 400) {
+    if (screenSize <= 500) {
       setShowStats(false);
     } else {
       setShowStats(true);
