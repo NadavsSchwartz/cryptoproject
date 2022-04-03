@@ -33,8 +33,7 @@ const Footer = () => {
         level={5}
         style={{ color: 'white', textAlign: 'center' }}
       >
-        Copyright &copy; 2020-{currentYear}
-        <a href="/">CryptoApp.</a> <br />
+        Copyright &copy; 2020-{currentYear} <a href="/">CryptoApp.</a>
       </Typography.Title>
     </footer>
   );

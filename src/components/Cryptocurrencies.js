@@ -44,7 +44,7 @@ const Cryptocurrencies = ({ simplified }) => {
           <div>
             <Search
               allowClear
-              placeholder="input search text"
+              placeholder="Search for a coin ticker or name"
               enterButton="Search"
               size="large"
               onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
