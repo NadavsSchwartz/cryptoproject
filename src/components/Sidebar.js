@@ -32,12 +32,7 @@ const Sidebar = ({ collapsed }) => {
         >
           <div>
             <a href="/">
-              <img
-                src="/logo_transparent.png"
-                alt="logo"
-                width={90}
-                height={90}
-              />
+              <img src="/cryptoapp.svg" alt="logo" height={80} />
             </a>
           </div>
         </div>
