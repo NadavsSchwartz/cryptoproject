@@ -1,107 +1,44 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5639531f-4e8a-4661-abd0-4b3e40736ffd/deploy-status)](https://app.netlify.com/sites/react-app-crypto-currency/deploys)
-![Heroku](https://pyheroku-badge.herokuapp.com/?app=crypto-currency-backend&style=flat)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-# CryptoApp
-> One stop app for anything Cryptocurrency.
+## Available Scripts
 
-https://cryptoapp.win
+In the project directory, you can run:
 
-### Table of Contents
+### `yarn start`
 
-- [Description](#description)
-- [Key Features](#key-features)
-- [Stack](#Stack)
-- [Setup](#Setup)
-- [Resources](#Resources)
-    - [Home Page Component](#HomePage)
-    - [Coind Details Component](#CoindDetails)
-    - [AllCoins Component](#AllCoins)
-    - [News Component](#News)
-- [Contributing](#Contributing)
-- [License](#license)
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
----
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-## Description
-CrypoApp was created to help people conveniently check crypto-related news, coin historical data, Exchange Data, etc.
+### `yarn test`
 
-## Key Features
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- Free forever.
-- Integration of three API's (Coinranking, Coincap, Microsoft Bing news).
-- In depth graph details of price history for any coin, along with important data.
-- Dedicated news section with coin subject filters.
-- Dedicated exchanges table for quick stats on dozens of coins.
-- Query caching with Rails cache
+### `yarn build`
 
-## Stack:
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- React (UI library)
-- Redux Toolkit (State management)
-- Antd (CSS styling solution library)
-- React Charts (Chart library) 
-- Rails (Web app framework)
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-### Back End REPO
-[CryptoApp Back end](https://github.com/NadavsSchwartz/-crypto_backend)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Setup
-To use CryptoApp locally, You need to have [Node.js](https://nodejs.org/) installed along with all the dependencies.
+### `yarn eject`
 
-1. Clone this and [CryptoApp Back end](https://github.com/NadavsSchwartz/-crypto_backend) repository
-2. Create an `.env` file in the back-end folder and fill it properly ([see below](#configuration)).
-3. Install dependencies: `npm install` or `yarn` if you're using yarn.
-4. Run for development: `npm run dev` or `yarn dev` if you're using yarn.
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-### Configuration
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-For the configuration, the following settings have to be added in your `.env`-file:
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-- [Microsoft news as (NEWS_API_KEY)](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/bing-news-search1)
-- [Coinranking as (COINRANKING_API_KEY)](https://developers.coinranking.com/account/)
-- [Coincap as (COINCAP_API_KEY)](https://coincap.io/api-key)
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-Please have ruby and rails installed prior to running the back end, as well as the [other dependencies from the Back End repo](https://github.com/NadavsSchwartz/-crypto_backend#dependencies).
+## Learn More
 
-## Resources
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### HomePage
-| route | method | description | Docs |
-|---|---|---|---|
-|  '/' | GET | App's homepage. renders simplified version of each components |  [code](./src/components/Homepage.js) |
----
-
-### CoinDetails
-| route | methods | description | Docs |
-|---|---|---|---|
-|  '/crypto/:coinId' | GET | renders show page for particular coin | [code](./src/components/CrpytoDetails.js) |
-
----
-### AllCoins
-| route | methods | description | Docs |
-|---|---|---|---|
-|  '/cryptocurrencies' | GET | shows all crypto currencies |  [code](./src/components/Cryptocurrencies.js) |
-
----
-### News
-|  route | Methods | description  |  Docs |
-|---|---|---|---|
-|  '/news' | GET | renders crypto currency related news | [code](./src/components/News.js) |
-
----
-### Exchanges
-|  route | Methods | description  |  Docs |
-|---|---|---|---|
-|  '/exchanges' | GET | renders crypto currency exchanges table | [code](./src/components/Exchanges.js) |
-
-## Contributing
-
-Pull requests are welcome. You'll probably find lots of improvements to be made.
-
-Open issues for feedback, requesting features, reporting bugs, or discuss ideas.
-
-## License
-
-The app is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-
+To learn React, check out the [React documentation](https://reactjs.org/).
