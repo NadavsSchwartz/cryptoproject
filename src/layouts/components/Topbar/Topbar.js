@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import { alpha, useTheme } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
+import { useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 import { ThemeModeToggler } from './components';
 
-const Topbar = ({ onSidebarOpen }) => {
+const Topbar = () => {
   const theme = useTheme();
   const { mode } = theme.palette;
 
@@ -23,7 +22,7 @@ const Topbar = ({ onSidebarOpen }) => {
         display={'flex'}
         component="a"
         href="/"
-        title="theFront"
+        title="CryptoApp"
         width={{ xs: 100, md: 120 }}
       >
         <Box
@@ -37,82 +36,38 @@ const Topbar = ({ onSidebarOpen }) => {
           width={1}
         />
       </Box>
-      <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>
-        <Box marginLeft={3}>
-          <Link underline="none" component="a" href="/" color="text.primary">
-            Home
-          </Link>
+      <Box sx={{ display: 'flex' }} alignItems={'center'}>
+        <Box>
+          <Button component={Link} to="/faq">
+            <Typography fontWeight={700} color="text.primary">
+              {'FAQ'}
+            </Typography>
+          </Button>
         </Box>
-        <Box marginLeft={3}>
-          <Link
-            underline="none"
-            component="a"
-            href="/home"
-            color="text.primary"
-          >
-            Pages
-          </Link>
+        <Box>
+          <Button component={Link} to="/privacy">
+            <Typography fontWeight={700} color="text.primary">
+              {'Privacy'}
+            </Typography>
+          </Button>
         </Box>
-        <Box marginLeft={3}>
-          <Link
-            underline="none"
-            component="a"
-            href="/blocks"
-            color="text.primary"
-          >
-            Components
-          </Link>
-        </Box>
-        <Box marginLeft={3}>
-          <Link
-            underline="none"
-            component="a"
-            href="/demos"
-            color="text.primary"
-          >
-            Demos
-          </Link>
-        </Box>
-        <Box marginLeft={3}>
+        <Box>
           <ThemeModeToggler />
         </Box>
-        <Box marginLeft={3}>
+        <Box>
           <Button
             variant="contained"
             color="primary"
-            component="a"
-            target="blank"
-            href="https://mui.com/store/items/the-front-landing-page/"
+            component={Link}
+            to="/login"
             size="large"
           >
-            Purchase now
+            Login
           </Button>
         </Box>
       </Box>
-      <Box sx={{ display: { xs: 'flex', md: 'none' } }} alignItems={'center'}>
-        <Box marginRight={1}>
-          <ThemeModeToggler />
-        </Box>
-        <Button
-          onClick={() => onSidebarOpen()}
-          aria-label="Menu"
-          variant={'outlined'}
-          sx={{
-            borderRadius: 2,
-            minWidth: 'auto',
-            padding: 1,
-            borderColor: alpha(theme.palette.divider, 0.2),
-          }}
-        >
-          <MenuIcon />
-        </Button>
-      </Box>
     </Box>
   );
-};
-
-Topbar.propTypes = {
-  onSidebarOpen: PropTypes.func,
 };
 
 export default Topbar;
