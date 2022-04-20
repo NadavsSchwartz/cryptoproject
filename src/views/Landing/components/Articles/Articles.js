@@ -45,11 +45,11 @@ const Articles = () => {
 
   const sliderOpts = {
     dots: true,
-    arrows: false,
+    arrows: true,
     infinite: true,
     slidesToShow: isMd ? 3 : 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2000,
   };
 
@@ -57,51 +57,14 @@ const Articles = () => {
     <Box>
       <Box marginBottom={4}>
         <Typography
-          sx={{
-            textTransform: 'uppercase',
-            fontWeight: 'medium',
-          }}
-          gutterBottom
-          color={'secondary'}
-        >
-          Articles
-        </Typography>
-        <Typography
           variant="h4"
           gutterBottom
           sx={{
             fontWeight: 700,
           }}
         >
-          Browse our popular articles
+          Recent Crypto Related News
         </Typography>
-        <Box display="flex" justifyContent={'flex-start'} marginTop={2}>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            endIcon={
-              <Box
-                component={'svg'}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                width={24}
-                height={24}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </Box>
-            }
-          >
-            View all
-          </Button>
-        </Box>
       </Box>
       <Box
         data-aos={'fade-up'}
